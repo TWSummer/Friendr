@@ -4,7 +4,6 @@ import LoggedInHomeContainer from './logged_in_home/logged_in_home_container';
 import SiteHeaderContainer from './site_header/site_header_container';
 
 const LoggedIn = (props) => {
-  console.log(props);
 
   return (
     <div>
