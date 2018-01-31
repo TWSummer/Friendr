@@ -157,12 +157,17 @@ input[type="submit"] {
   background-color: #47e;
 }
 
-.auth-input{
+.auth-input {
   border: 1px solid #111;
   background-color: #fff;
   border-radius: 5px;
   padding: 8px;
   font-size: 24px;
+}
+
+.auth-errors {
+  color: #f75;
+  width: 314px;
 }
 
 .header-logo {

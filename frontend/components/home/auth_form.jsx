@@ -24,7 +24,7 @@ class AuthForm extends React.Component {
         <ul>
           {
             this.props.errors.map( (error, idx) => (
-              <li key={idx}>{error}</li>
+              <li className="auth-errors" key={idx}>{error}</li>
             ))
           }
         </ul>
