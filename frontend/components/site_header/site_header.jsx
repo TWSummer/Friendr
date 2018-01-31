@@ -8,9 +8,18 @@ class SiteHeader extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.props.logout.bind(this)}>Log Out</button>
-      </div>
+      <header className="site-header">
+        <div className="left-header">
+          <div className="header-logo">Logo</div>
+          <Link className="header-link" to="/friends">Browse Friends</Link>
+          <Link className="header-link" to="/questions">Answer Questions</Link>
+        </div>
+        <div className="right-header">
+          <Link className="header-link" to="/messages">Messages</Link>
+          <Link className="header-link" to="/profile">Profile</Link>
+          <button className="header-button" onClick={this.props.logout.bind(this)}>Log Out</button>
+        </div>
+      </header>
     );
   }
 }
