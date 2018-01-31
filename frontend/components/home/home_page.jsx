@@ -8,6 +8,12 @@ class HomePage extends React.Component {
     this.state={form: ""};
   }
 
+  componentDidMount() {
+    if (this.props.loggedIn) {
+      this.props.history.push('/home');
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
       this.props.history.push('/home');
