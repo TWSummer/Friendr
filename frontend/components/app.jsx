@@ -8,7 +8,7 @@ import LoggedIn from './logged_in';
 
 
 const App = () => (
-  <div>
+  <div className="container">
     <Switch>
       <AuthRoute exact path="/" component={HomePageContainer} />
       <ProtectedRoute path="/" component={LoggedIn} />

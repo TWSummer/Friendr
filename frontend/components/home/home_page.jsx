@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AuthForm from './auth_form';
+import SiteFooter from '../site_footer';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -41,11 +42,18 @@ class HomePage extends React.Component {
     }
     return (
       <div>
-        <header className="home-header">
-          <button onClick={this.showForm("login").bind(this)} className="auth-button">Log In</button>
-          <button onClick={this.showForm("signup").bind(this)} className="auth-button">Sign Up</button>
+        <header className="standard-header">
+          <div>Logo</div>
+          <div>
+            <button onClick={this.showForm("login").bind(this)} className="auth-button">Log In</button>
+            <button onClick={this.showForm("signup").bind(this)} className="auth-button">Sign Up</button>
+          </div>
         </header>
         {form}
+        <main className="page-main">
+
+        </main>
+        <SiteFooter />
       </div>
     );
   }

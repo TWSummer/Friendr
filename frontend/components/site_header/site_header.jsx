@@ -8,7 +8,7 @@ class SiteHeader extends React.Component {
 
   render() {
     return (
-      <header className="site-header">
+      <header className="standard-header">
         <div className="left-header">
           <div className="header-logo">Logo</div>
           <Link className="header-link" to="/friends">Browse Friends</Link>

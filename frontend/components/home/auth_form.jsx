@@ -29,25 +29,23 @@ class AuthForm extends React.Component {
           }
         </ul>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>Username
-            <input
-              type="text"
-              value={this.state.username}
-              className="auth-input"
-              onChange={this.update("username").bind(this)}
-              />
-          </label>
+          <input
+            type="text"
+            value={this.state.username}
+            className="auth-input"
+            placeholder="Username"
+            onChange={this.update("username").bind(this)}
+            />
           <br />
-          <label>Password
-            <input
-              type="password"
-              value={this.state.password}
-              className="auth-input"
-              onChange={this.update("password").bind(this)}
-              />
-          </label>
+          <input
+            type="password"
+            value={this.state.password}
+            className="auth-input"
+            placeholder="Password"
+            onChange={this.update("password").bind(this)}
+            />
           <br />
-          <input className="auth-button" type="submit" value={this.props.formType} />
+          <input className="auth-form-button" type="submit" value={this.props.formType} />
         </form>
       </div>
     );
