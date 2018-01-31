@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class LoggedInHome extends React.Component {
+class SiteHeader extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -9,10 +9,10 @@ class LoggedInHome extends React.Component {
   render() {
     return (
       <div>
-        You are logged in!
+        <button onClick={this.props.logout.bind(this)}>Log Out</button>
       </div>
     );
   }
 }
 
-export default LoggedInHome;
+export default SiteHeader;
