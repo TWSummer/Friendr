@@ -45,8 +45,14 @@ class HomePage extends React.Component {
         <header className="standard-header">
           <div>Logo</div>
           <div>
-            <button onClick={this.showForm("login").bind(this)} className="auth-button">Log In</button>
-            <button onClick={this.showForm("signup").bind(this)} className="auth-button">Sign Up</button>
+            <button
+              onClick={this.showForm("login").bind(this)}
+              className="auth-button"
+              >Log In</button>
+            <button
+              onClick={this.showForm("signup").bind(this)}
+              className="auth-button"
+              >Sign Up</button>
           </div>
         </header>
         {form}

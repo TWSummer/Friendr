@@ -104,6 +104,7 @@ input[type="submit"] {
 
 .standard-header {
   justify-content: space-between;
+  padding: 0 20px;
   display: flex;
   background-color: #104da1;
   border-bottom: 1px solid #104da1;
@@ -133,12 +134,17 @@ input[type="submit"] {
 }
 
 .auth-button {
-  color: #111;
-  padding: 8px;
-  border: 1px solid #111;
+  background-color: #28c;
+  border: 1px solid #26b;
+  color: #fff;
+  padding: 12px;
   border-radius: 4px;
   margin-left: 10px;
-  font-size: 24px;
+  font-size: 16px;
+}
+
+.auth-button:hover {
+  background-color: #39d;
 }
 
 .auth-form-button {
