@@ -7,6 +7,7 @@ class Api::UsersController < ApplicationController
         birthdate: Date.today - 18.years,
         gender: "Prefer Not to Say")
     if @user.save
+      login(@user)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
