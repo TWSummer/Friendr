@@ -10,6 +10,7 @@ class LoggedInHome extends React.Component {
     return (
       <div>
         You are logged in!
+        <button onClick={this.props.logout.bind(this)}>Log Out</button>
       </div>
     );
   }
