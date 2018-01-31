@@ -1,17 +1,21 @@
 import Profile from './profile';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { fetchProfile, updateProfile } from '../../actions/profile_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let profile;
+  if (state.entities.profiles) {
+    profile = Object.values(state.entities.profiles)[0];
+  }
   return ({
-    profile: Object.values(state.entities.profiles)
+    profile
   });
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
   return ({
-    logout: () => dispatch(logout())
+    fetchProfile: () => dispatch(fetchProfile(ownProps.match.params.username)),
+    updateProfile: (profile) => dispatch(updateProfile(profile))
   });
 };
 

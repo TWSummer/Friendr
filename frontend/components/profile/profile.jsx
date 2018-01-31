@@ -6,10 +6,18 @@ class Profile extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchProfile();
+  }
+
   render() {
+    let profileBody;
+    if (this.props.profile) {
+      profileBody = <p>Profile Body {this.props.profile.name}</p>;
+    }
     return (
       <div>
-        This is your profile!
+        {profileBody}
       </div>
     );
   }
