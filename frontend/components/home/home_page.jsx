@@ -15,9 +15,17 @@ class HomePage extends React.Component {
   render() {
     let form;
     if (this.state.form === "login") {
-      form = <AuthForm formType="Log In" action={this.props.login} />;
+      form = <AuthForm
+        formType="Log In"
+        action={this.props.login}
+        errors={this.props.errors}
+        />;
     } else if (this.state.form === "signup") {
-      form = <AuthForm formType="Sign Up" action={this.props.signup} />;
+      form = <AuthForm
+        formType="Sign Up"
+        action={this.props.signup}
+        errors={this.props.errors}
+        />;
     }
     return (
       <div>
