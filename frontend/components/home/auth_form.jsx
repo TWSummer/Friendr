@@ -6,8 +6,6 @@ class AuthForm extends React.Component {
     this.state={username: "", password: ""};
   }
 
-  
-
   render() {
     return (
       <div className="auth-form">
