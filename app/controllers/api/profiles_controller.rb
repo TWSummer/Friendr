@@ -2,11 +2,11 @@ class Api::ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by(id: params[:id])
-    if @current_user.profile == @profile
+    if current_user && current_user.profile == @profile
       if @profile.update(profile_params)
         render :show
       else
-        render json: @profiles.errors.full_messages, status: 422
+        render json: @profile.errors.full_messages, status: 422
       end
     else
       render json: ["You must be logged in as this user to update their profile"], status: 401

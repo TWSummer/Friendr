@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfileHeader from './profile_header';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -14,10 +13,7 @@ class Profile extends React.Component {
     let profileBody;
     if (this.props.profile) {
       profileBody = (
-        <ProfileHeader
-          profile={this.props.profile}
-          session={this.props.session}
-          updateProfile={this.props.updateProfile}/>
+        <p>This is the profile of {this.props.profile.name}</p>
       );
     }
     return (

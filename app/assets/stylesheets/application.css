@@ -18,9 +18,9 @@
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small {
-  margin: 0;
+span, article, footer, time, small, h3 {
   padding: 0;
+  margin: 0;
   border: 0;
   outline: 0;
   font: inherit;
@@ -107,73 +107,9 @@ input[type="submit"] {
   padding: 0 20px;
   display: flex;
   background-color: #104da1;
-  border-bottom: 1px solid #104da1;
+  border-bottom: 1px solid #a0b7f0;
   height: 64px;
   align-items: center;
-}
-
-.auth-form {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  transform: translateX(-50%);
-  border: 2px solid #000;
-  border-radius: 10px;
-  background-color: #eef;
-  padding: 10px;
-}
-
-.auth-form h1 {
-  font-size: 36px;
-  padding: 20px;
-  text-align: center;
-}
-
-.auth-form form input {
-  margin-bottom: 20px;
-}
-
-.auth-button {
-  background-color: #28c;
-  border: 1px solid #26b;
-  color: #fff;
-  padding: 12px;
-  border-radius: 4px;
-  margin-left: 10px;
-  font-size: 16px;
-}
-
-.auth-button:hover {
-  background-color: #39d;
-}
-
-.auth-form-button {
-  text-align: center;
-  color: #fff;
-  width: 94%;
-  margin-left: 3%;
-  padding: 8px 0;
-  border: 1px solid #111;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #36d;
-}
-
-.auth-form-button:hover {
-  background-color: #47e;
-}
-
-.auth-input {
-  border: 1px solid #111;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 8px;
-  font-size: 24px;
-}
-
-.auth-errors {
-  color: #f75;
-  width: 314px;
 }
 
 .header-logo {

@@ -15,7 +15,9 @@ class Api::UsersController < ApplicationController
   end
 
   def fetch_user
-    @user = User.find_by(username: params[:username])
+    username = params[:username]
+    username = current_user.username if username == "undefined"
+    @user = User.find_by(username: username)
     if @user
       @profile = @user.profile
       render "api/profiles/show"

@@ -1,4 +1,4 @@
-import Profile from './profile';
+import ViewProfile from './view_profile';
 import { connect } from 'react-redux';
 import { fetchProfile, updateProfile } from '../../actions/profile_actions';
 
@@ -8,8 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     profile = Object.values(state.entities.profiles)[0];
   }
   return ({
-    profile,
-    session: state.session
+    profile
   });
 };
 
@@ -23,4 +22,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Profile);
+)(ViewProfile);

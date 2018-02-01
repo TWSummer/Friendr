@@ -15,9 +15,14 @@ class SiteHeader extends React.Component {
           <Link className="header-link" to="/questions">Answer Questions</Link>
         </div>
         <div className="right-header">
-          <Link className="header-link" to="/messages">Messages</Link>
-          <Link className="header-link" to={`/profile/${this.props.currentUser.username}`}>Profile</Link>
-          <button className="header-button" onClick={this.props.logout.bind(this)}>Log Out</button>
+          <Link className="header-link" to="/messages">
+            <i className="fas fa-comment"></i>
+          </Link>
+          <Link className="header-link" to={`/profile/`}>Profile</Link>
+          <button
+            className="header-button"
+            onClick={this.props.logout.bind(this)}
+            >Log Out</button>
         </div>
       </header>
     );
