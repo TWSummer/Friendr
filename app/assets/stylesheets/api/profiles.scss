@@ -190,3 +190,26 @@
 .cancel-response-button:hover {
   background-color: #bbb;
 }
+
+.gender-display svg {
+  color: #0d8;
+  margin-left: 10px;
+}
+
+.gender-display {
+  width: 170px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.gender-display:hover {
+  background-color: #cfe;
+}
+
+.gender-select {
+  margin: 5px 0;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
