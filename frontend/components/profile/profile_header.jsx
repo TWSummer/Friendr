@@ -20,11 +20,11 @@ class ProfileHeader extends React.Component {
         position: pos,
         map: this.map
       });
-      this.listenForMove(marker);
+      this.listenForClick(marker);
     }
   }
 
-  listenForMove(marker) {
+  listenForClick(marker) {
     google.maps.event.addListener(this.map, 'click', (e) => {
       marker.setMap(null);
       marker = new google.maps.Marker({
