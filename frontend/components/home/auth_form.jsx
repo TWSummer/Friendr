@@ -17,9 +17,13 @@ class AuthForm extends React.Component {
     this.props.action({ user: this.state });
   }
 
+  formClick(e) {
+    e.stopPropagation();
+  }
+
   render() {
     return (
-      <div className="auth-form">
+      <div className="auth-form" onClick={this.formClick.bind(this)}>
         <h1>{this.props.formType}</h1>
         <ul>
           {

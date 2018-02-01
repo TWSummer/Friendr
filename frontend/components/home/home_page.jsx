@@ -22,7 +22,10 @@ class HomePage extends React.Component {
   }
 
   showForm(type) {
-    return () => this.setState({form: type});
+    return (e) => {
+      e.stopPropagation();
+      this.setState({form: type});
+    };
   }
 
   render() {
@@ -41,7 +44,7 @@ class HomePage extends React.Component {
         />;
     }
     return (
-      <div>
+      <div onClick={this.showForm("").bind(this)}>
         <header className="standard-header">
           <div>Logo</div>
           <div>
