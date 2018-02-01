@@ -59,14 +59,28 @@ class ProfileHeader extends React.Component {
       longitude: this.state.longitude
     })
       .then(
-        () => this.setState({header: false})
+        () => this.setState({header: false, showErrors: false}),
+        () => this.setState({showErrors: true})
       );
   }
 
   editHeader() {
+    let errorsField;
+    if (this.state.showErrors) {
+      errorsField = (
+        <ul>
+          {
+            this.props.errors.map( (error, idx) => (
+              <li className="auth-errors" key={idx}>{error}</li>
+            ))
+          }
+        </ul>
+      );
+    }
     return (
       <div
         className="profile-header-fields">
+        {errorsField}
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label htmlFor="name">First Name</label>
           <br/>

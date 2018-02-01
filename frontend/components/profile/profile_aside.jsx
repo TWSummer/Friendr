@@ -11,6 +11,7 @@ class profileAside extends React.Component {
   }
 
   cancelEdit(e) {
+    e.preventDefault();
     this.setState({edit: false, gender: this.props.profile.gender});
   }
 

@@ -20,13 +20,16 @@ class Profile extends React.Component {
           <ProfileHeader
             profile={this.props.profile}
             session={this.props.session}
+            errors={this.props.errors}
             updateProfile={this.props.updateProfile}/>
           <main className="main-profile">
             <ProfileSection
               profile={this.props.profile}
+              errors={this.props.errors}
               updateProfile={this.props.updateProfile} />
             <ProfileAside
               profile={this.props.profile}
+              errors={this.props.errors}
               updateProfile={this.props.updateProfile} />
           </main>
         </div>

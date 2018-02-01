@@ -20,7 +20,7 @@ class SiteHeader extends React.Component {
           </Link>
           <Link className="header-link" to={`/profile/`}>Profile</Link>
           <button
-            className="header-button"
+            className="header-link"
             onClick={this.props.logout.bind(this)}
             >Log Out</button>
         </div>

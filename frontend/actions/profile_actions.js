@@ -17,7 +17,7 @@ export const fetchProfile = username => dispatch => (
   APIUtil.fetchProfile(username)
     .then(
       profile => dispatch(receiveProfile(profile)),
-      errors => dispatch(receiveErrors(errors))
+      errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );
 
@@ -26,6 +26,6 @@ export const updateProfile = formProfile => dispatch => (
   APIUtil.updateProfile(formProfile)
     .then(
       profile => dispatch(receiveProfile(profile)),
-      errors => dispatch(receiveErrors(errors))
+      errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );

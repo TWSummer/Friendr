@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
   }
   return ({
     profile,
-    session: state.session
+    session: state.session,
+    errors: state.errors.profile
   });
 };
 
