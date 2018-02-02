@@ -24,6 +24,7 @@ class HomePage extends React.Component {
   showForm(type) {
     return (e) => {
       e.stopPropagation();
+      this.props.clearErrors();
       this.setState({form: type});
     };
   }

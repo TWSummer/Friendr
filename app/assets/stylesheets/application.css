@@ -117,10 +117,13 @@ input[type="submit"] {
 }
 
 .header-logo img {
-  transform: translateY(20%);
   display: inline;
-  height: 25px;
-  width: 60px;
+  height: 40px;
+  width: 95px;
+}
+
+.left-header, .right-header {
+  vertical-align: middle;
 }
 
 .header-link {
