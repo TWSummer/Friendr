@@ -7,8 +7,12 @@ class profileSectionItem extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.profile[this.props.type] !== newProps.profile[this.props.type]) {
-      this.setState({[this.props.type]: newProps.profile[this.props.type]});
+    if (this.props.user_id !== newProps.profile.user_id) {
+      this.setState({
+        id: newProps.profile.id,
+        user_id: newProps.profile.user_id,
+        [this.props.type]: newProps.profile[this.props.type]
+      });
     }
   }
 

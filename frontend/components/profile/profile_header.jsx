@@ -24,6 +24,19 @@ class ProfileHeader extends React.Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.profile.user_id !== newProps.profile.user_id) {
+      this.setState({
+        id: newProps.profile.id,
+        user_id: newProps.profile.user_id,
+        name: newProps.profile.name,
+        birthdate: newProps.profile.birthdate,
+        latitude: newProps.profile.latitude,
+        longitude: newProps.profile.longitude
+      });
+    }
+  }
+
   listenForClick(marker) {
     google.maps.event.addListener(this.map, 'click', (e) => {
       marker.setMap(null);

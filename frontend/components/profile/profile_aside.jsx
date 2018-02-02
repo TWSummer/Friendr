@@ -7,8 +7,12 @@ class profileAside extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.profile.gender !== newProps.profile.gender) {
-      this.setState({gender: newProps.profile.gender});
+    if (this.props.profile.user_id !== newProps.profile.user_id) {
+      this.setState({
+        id: newProps.profile.id,
+        user_id: newProps.profile.user_id,
+        gender: newProps.profile.gender
+      });
     }
   }
 
