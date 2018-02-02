@@ -1,3 +1,53 @@
 // Place all the styles related to the api/Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.question-page-header {
+  width: 100%;
+  background-color: #104da1;
+  height: 104px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-inner-header {
+  width: 1000px;
+}
+
+.question-inner-header a {
+  display: flex;
+  align-items: center;
+}
+
+.question-inner-header img {
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  margin: 0 15px;
+}
+
+.question-inner-header svg {
+  font-size: 32px;
+  color: #fff;
+}
+
+.question-inner-header h2 {
+  font-size: 24px;
+  color: #fff;
+}
+
+.question-main {
+  width: 880px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-section {
+  width: 510px;
+}
+
+.question-aside {
+  width: 320px;
+}
