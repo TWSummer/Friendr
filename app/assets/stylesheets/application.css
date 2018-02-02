@@ -126,6 +126,10 @@ input[type="submit"] {
   vertical-align: middle;
 }
 
+.left-header a img {
+  transform: translateY(-2px);
+}
+
 .header-link {
   color: #d6e1f9;
   font-size: 18px;
