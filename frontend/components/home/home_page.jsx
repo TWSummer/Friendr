@@ -46,7 +46,9 @@ class HomePage extends React.Component {
     return (
       <div onClick={this.showForm("").bind(this)}>
         <header className="standard-header">
-          <div>Logo</div>
+          <Link className="header-logo" to="/">
+            <img src="https://i.imgur.com/bQgZtp4.png" alt="logo"/>
+          </Link>
           <div>
             <button
               onClick={this.showForm("login").bind(this)}

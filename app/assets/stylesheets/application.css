@@ -116,6 +116,13 @@ input[type="submit"] {
   display: inline;
 }
 
+.header-logo img {
+  transform: translateY(20%);
+  display: inline;
+  height: 25px;
+  width: 60px;
+}
+
 .header-link {
   color: #d6e1f9;
   font-size: 18px;

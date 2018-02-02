@@ -10,7 +10,9 @@ class SiteHeader extends React.Component {
     return (
       <header className="standard-header">
         <div className="left-header">
-          <div className="header-logo">Logo</div>
+          <Link className="header-logo" to="/home">
+            <img src="https://i.imgur.com/bQgZtp4.png" alt="logo"/>
+          </Link>
           <Link className="header-link" to="/friends">Browse Friends</Link>
           <Link className="header-link" to="/questions">Answer Questions</Link>
         </div>
