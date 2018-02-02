@@ -32,7 +32,8 @@ class ProfileHeader extends React.Component {
         name: newProps.profile.name,
         birthdate: newProps.profile.birthdate,
         latitude: newProps.profile.latitude,
-        longitude: newProps.profile.longitude
+        longitude: newProps.profile.longitude,
+        primary_img_url: newProps.profile.primary_img_url
       });
     }
   }
@@ -172,7 +173,7 @@ class ProfileHeader extends React.Component {
         <main>
           <img
             className="profile-image-holder"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={this.state.primary_img_url}
             alt="Profile image"/>
           {profileHeaderFields}
         </main>
