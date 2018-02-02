@@ -85,7 +85,7 @@ class ProfileHeader extends React.Component {
         <ul>
           {
             this.props.errors.map( (error, idx) => (
-              <li className="auth-errors" key={idx}>{error}</li>
+              <li className="profile-errors" key={idx}>{error}</li>
             ))
           }
         </ul>
