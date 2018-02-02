@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resources :profiles, only: [:update]
     get "users/:username", to: "users#fetch_user"
     resource :session, only: [:create, :destroy]
-    resources :questions, only: [:show, :create]
+    resources :questions, only: [:index, :create]
   end
 end
