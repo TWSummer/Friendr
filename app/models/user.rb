@@ -5,7 +5,8 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
+  has_many :question_answers, dependent: :destroy
 
   def password=(password)
     @password = password
