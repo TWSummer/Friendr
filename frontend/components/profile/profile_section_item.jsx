@@ -6,6 +6,12 @@ class profileSectionItem extends React.Component {
     this.state=this.props.profile;
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.profile[this.props.type] !== newProps.profile[this.props.type]) {
+      this.setState({[this.props.type]: newProps.profile[this.props.type]});
+    }
+  }
+
   showEdit() {
     this.setState({edit: true});
   }

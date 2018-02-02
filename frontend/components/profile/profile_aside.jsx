@@ -6,6 +6,12 @@ class profileAside extends React.Component {
     this.state = this.props.profile;
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.profile.gender !== newProps.profile.gender) {
+      this.setState({gender: newProps.profile.gender});
+    }
+  }
+
   setEdit(e) {
     this.setState({edit: true});
   }
