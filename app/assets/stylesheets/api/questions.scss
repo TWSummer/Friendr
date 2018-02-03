@@ -210,3 +210,71 @@
 .skip-button:hover {
   background-color: #ccc;
 }
+
+.importance-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+.importance-button {
+  width: 155px;
+  height: 30px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  background-color: #ddd;
+}
+
+.importance-button:hover {
+  background-color: #ccc;
+}
+
+.importance-labels {
+  display: flex;
+  justify-content: space-around;
+}
+
+.importance-highlight {
+  background-color: #57d;
+}
+
+.importance-highlight:hover {
+  background-color: #59d;
+}
+
+.highest-percentage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.highest-percentage h1 {
+  font-size: 72px;
+  color: #57d;
+}
+
+.highest-percentage h2 {
+  font-size: 48px;
+  color: #57d;
+}
+
+.highest-percentage-outer-box h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #57d;
+  margin-bottom: 20px;
+}
+
+.highest-percentage-outer-box {
+  margin: 0 12px;
+  margin-top: 80px;
+  border-bottom: 1px solid #ccc;
+}
+
+.question-aside h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 30px 0;
+  padding-bottom: 30px;
+  padding-left: 12px;
+  border-bottom: 1px solid #ddd;
+}
