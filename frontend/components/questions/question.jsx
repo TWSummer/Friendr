@@ -16,6 +16,7 @@ class Question extends React.Component {
       errors: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSkip = this.handleSkip.bind(this);
     this.submitSuccess = this.submitSuccess.bind(this);
     this.submitFailure = this.submitFailure.bind(this);
   }
@@ -82,7 +83,6 @@ class Question extends React.Component {
   }
 
   submitSuccess(newQuestion) {
-    console.log(newQuestion);
     this.setState({
       question: newQuestion,
       friendAnswer: {},
@@ -90,15 +90,27 @@ class Question extends React.Component {
       myAnswer: undefined,
       errors: []
     });
-    console.log(this.state);
   }
 
   submitFailure(errors) {
     this.setState({errors: errors.responseJSON });
   }
 
+  handleSkip(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: `/api/questions`,
+      data: {
+        id: this.state.question.id,
+        importance: 0,
+        myAnswer: -2,
+        friendAnswer: [-1]
+      }
+    }).then(this.submitSuccess, this.submitFailure);
+  }
+
   render() {
-    console.log(this.state);
     let highlightLow, highlightMed, highlightHigh, disableCheckboxes, disableImportance;
     if (this.state.importance === 1) {
       highlightLow = "importance-highlight";
@@ -215,7 +227,10 @@ class Question extends React.Component {
                     className="answer-button"
                     onClick={this.handleSubmit}
                     >Answer</button>
-                  <button className="skip-button">Skip</button>
+                  <button
+                    className="skip-button"
+                    onClick={this.handleSkip}
+                    >Skip</button>
                 </div>
               </form>
             </article>
