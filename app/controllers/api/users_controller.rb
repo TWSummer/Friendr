@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
         name: @user.username,
         birthdate: Date.today - 18.years,
         gender: "Prefer Not to Say",
-        primary_img_url: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+        primary_img_url: "https://i.imgur.com/KD3v2vP.jpg")
     if @user.save
       login(@user)
       render :show
