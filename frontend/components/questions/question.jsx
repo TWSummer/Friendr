@@ -37,17 +37,23 @@ class Question extends React.Component {
         </header>
         <main className="question-main">
           <section className="question-section">
-            <h2>Friendship Compatibility Questions</h2>
-            <article>
+            <h2>Compatibility Questions</h2>
+            <article className="question-article">
               <h3>
                 {this.state.question.question}
               </h3>
-              <form>
+              <form className="question-form">
                 {
                   this.state.question.options.map( (option, idx) => (
-                    <label key={option.id}>
-                      <input type="radio"/>{option.body}
-                      <br/>
+                    <label key={option.id} className="radio-label">
+                      <input
+                        type="radio"
+                        className="radio-button"
+                        name="my-answer"
+                        value={option.id}
+                        />
+                      <span className="selected-radio"></span>
+                      {option.body}<br/>
                     </label>
                   ))
                 }
@@ -56,23 +62,37 @@ class Question extends React.Component {
                 </h4>
                 {
                   this.state.question.options.map( (option, idx) => (
-                    <label key={option.id}>
-                      <input type="checkbox"/>{option.body}
-                      <br/>
+                    <label key={option.id} className="check-label">
+                      <input
+                        type="checkbox"
+                        className="checkbox"
+                        name="friend-answer"
+                        value={option.id}
+                        />
+                      <span className="checkmark"></span>
+                      {option.body}<br/>
                     </label>
                   ))
                 }
-                <label>
-                  <input type="checkbox"/>Any of the above
-                  <br/>
+                <label className="check-label">
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    name="friend-answer"
+                    value="-1"
+                    />
+                  <span className="checkmark"></span>
+                  Any of the above<br/>
                 </label>
                 <div className="importance-selector">
                   <div className={`importance-low`}></div>
                   <div className={`importance-med`}></div>
                   <div className={`importance-high`}></div>
                 </div>
-                <button>Answer</button>
-                <button>Skip</button>
+                <div className="answer-buttons">
+                  <button className="answer-button">Answer</button>
+                  <button className="skip-button">Skip</button>
+                </div>
               </form>
             </article>
           </section>
