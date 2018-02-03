@@ -27,7 +27,9 @@ class Question extends React.Component {
 
   setImportance(num) {
     return ( (e) => {
-      this.setState({importance: num});
+      if(!this.state.friendAnswer[-1]) {
+        this.setState({importance: num});
+      }
     });
   }
 
@@ -53,9 +55,17 @@ class Question extends React.Component {
     });
   }
 
+  setAny(e) {
+      if (this.state.friendAnswer[-1]) {
+        this.setState({friendAnswer: {}});
+      } else {
+        this.setState({friendAnswer: {[-1]: -1}, importance: 0});
+      }
+  }
+
   render() {
     console.log(this.state);
-    let highlightLow, highlightMed, highlightHigh;
+    let highlightLow, highlightMed, highlightHigh, disableCheckboxes, disableImportance;
     if (this.state.importance === 1) {
       highlightLow = "importance-highlight";
     } else if (this.state.importance === 3) {
@@ -65,6 +75,10 @@ class Question extends React.Component {
       highlightLow = "importance-highlight";
       highlightMed = "importance-highlight";
       highlightHigh = "importance-highlight";
+    }
+    if (this.state.friendAnswer[-1]) {
+      disableCheckboxes = "disable-checkboxes";
+      disableImportance = "disable-importance";
     }
     return (
       <div className="question-page">
@@ -108,18 +122,17 @@ class Question extends React.Component {
                 </h4>
                 {
                   this.state.question.options.map( (option, idx) => (
-                    <label
-                      key={option.id}
-                      className="check-label"
-                      onClick={this.setFriendAnswer(option.id).bind(this)}
-                      >
+                    <label key={option.id} className={`check-label ${disableCheckboxes}`}>
                       <input
                         type="checkbox"
                         className="checkbox"
                         name="friend-answer"
+                        checked={this.state.friendAnswer[option.id] ? true : false}
+                        disabled={this.state.friendAnswer[-1]}
+                        onChange={this.setFriendAnswer(option.id).bind(this)}
                         value={option.id}
                         />
-                      <span className="checkmark"></span>
+                      <span className={`checkmark ${disableCheckboxes}`}></span>
                       {option.body}<br/>
                     </label>
                   ))
@@ -129,6 +142,7 @@ class Question extends React.Component {
                     type="checkbox"
                     className="checkbox"
                     name="friend-answer"
+                    onChange={this.setAny.bind(this)}
                     value="-1"
                     />
                   <span className="checkmark"></span>
@@ -137,15 +151,15 @@ class Question extends React.Component {
                 <h4>Importance</h4>
                 <div className="importance-selector">
                   <div
-                    className={`importance-button ${highlightLow}`}
+                    className={`importance-button ${highlightLow} ${disableImportance}`}
                     onClick={this.setImportance(1).bind(this)}
                     ></div>
                   <div
-                    className={`importance-button ${highlightMed}`}
+                    className={`importance-button ${highlightMed} ${disableImportance}`}
                     onClick={this.setImportance(3).bind(this)}
                     ></div>
                   <div
-                    className={`importance-button ${highlightHigh}`}
+                    className={`importance-button ${highlightHigh} ${disableImportance}`}
                     onClick={this.setImportance(7).bind(this)}
                     ></div>
                 </div>

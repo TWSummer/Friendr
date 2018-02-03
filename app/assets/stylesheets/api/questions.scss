@@ -137,6 +137,18 @@
   transform: rotate(45deg);
 }
 
+.check-label input ~ .disable-checkboxes {
+  background-color: #aaa;
+}
+
+.check-label:hover input ~ .disable-checkboxes {
+  background-color: #aaa;
+}
+
+.disable-checkboxes {
+  cursor: default;
+}
+
 .selected-radio {
   position: absolute;
   top: -4px;
@@ -268,6 +280,14 @@
   margin: 0 12px;
   margin-top: 80px;
   border-bottom: 1px solid #ccc;
+}
+
+.disable-importance {
+  background-color: #aaa;
+}
+
+.disable-importance:hover {
+  background-color: #aaa;
 }
 
 .question-aside h3 {
