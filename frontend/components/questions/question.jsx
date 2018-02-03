@@ -12,8 +12,12 @@ class Question extends React.Component {
         options: [],
         answerCount: 0
       },
-      friendAnswer: {}
+      friendAnswer: {},
+      errors: []
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitSuccess = this.submitSuccess.bind(this);
+    this.submitFailure = this.submitFailure.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +65,36 @@ class Question extends React.Component {
       } else {
         this.setState({friendAnswer: {[-1]: -1}, importance: 0});
       }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: `/api/questions`,
+      data: {
+        id: this.state.question.id,
+        importance: this.state.importance,
+        myAnswer: this.state.myAnswer,
+        friendAnswer: Object.values(this.state.friendAnswer)
+      }
+    }).then(this.submitSuccess, this.submitFailure);
+  }
+
+  submitSuccess(newQuestion) {
+    console.log(newQuestion);
+    this.setState({
+      question: newQuestion,
+      friendAnswer: {},
+      importance: undefined,
+      myAnswer: undefined,
+      errors: []
+    });
+    console.log(this.state);
+  }
+
+  submitFailure(errors) {
+    this.setState({errors: errors.responseJSON });
   }
 
   render() {
@@ -142,6 +176,7 @@ class Question extends React.Component {
                     type="checkbox"
                     className="checkbox"
                     name="friend-answer"
+                    checked={this.state.friendAnswer[-1] ? true: false}
                     onChange={this.setAny.bind(this)}
                     value="-1"
                     />
@@ -168,8 +203,18 @@ class Question extends React.Component {
                   <p>Medium</p>
                   <p>High</p>
                 </div>
+                <ul className="error-list">
+                  {
+                    this.state.errors.map( (error, idx) => (
+                      <li className="question-errors" key={idx}>{error}</li>
+                    ))
+                  }
+                </ul>
                 <div className="answer-buttons">
-                  <button className="answer-button">Answer</button>
+                  <button
+                    className="answer-button"
+                    onClick={this.handleSubmit}
+                    >Answer</button>
                   <button className="skip-button">Skip</button>
                 </div>
               </form>
