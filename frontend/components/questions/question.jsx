@@ -217,9 +217,9 @@ class Question extends React.Component {
                 </div>
                 <ul className="error-list">
                   {
-                    this.state.errors.map( (error, idx) => (
+                    this.state.errors ? this.state.errors.map( (error, idx) => (
                       <li className="question-errors" key={idx}>{error}</li>
-                    ))
+                    )) : ""
                   }
                 </ul>
                 <div className="answer-buttons">
