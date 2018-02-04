@@ -6,6 +6,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_one :profile, dependent: :destroy
+  has_one :search_query, dependent: :destroy
   has_many :question_answers, dependent: :destroy
 
   def password=(password)

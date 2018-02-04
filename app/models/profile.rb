@@ -5,6 +5,8 @@ class Profile < ApplicationRecord
   validates :latitude, :longitude, numericality: true, allow_nil: true
   validate :birthdate_appropriate
 
+  belongs_to :user
+
   def birthdate_appropriate
     if birthdate
       if birthdate > Date.today - 18.years
@@ -16,5 +18,9 @@ class Profile < ApplicationRecord
     end
   end
 
-  belongs_to :user
+  def age
+    ((Time.now - birthdate.to_time) / 1.year).to_i
+  end
+
+
 end
