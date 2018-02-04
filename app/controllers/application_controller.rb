@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
 
   def logout()
     if current_user
-      current_user.reset_session_token!
+      if current_user.demo
+        current_user.destroy
+      else
+        current_user.reset_session_token!
+      end
     end
     session.delete(:session_token)
   end

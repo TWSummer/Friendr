@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resources :profiles, only: [:update]
     get "users/:username", to: "users#fetch_user"
+    post "users/demo", to: "users#demo_user"
     resource :session, only: [:create, :destroy]
     resources :questions, only: [:index, :create]
   end

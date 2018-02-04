@@ -20,3 +20,10 @@ export const logout = () => (
     url: '/api/session'
   })
 );
+
+export const createDemo = () => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/users/demo'
+  })
+);

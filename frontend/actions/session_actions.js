@@ -38,3 +38,11 @@ export const logout = () => dispatch => (
   APIUtil.logout()
     .then(user => dispatch(receiveUser(null)))
 );
+
+export const createDemo = () => dispatch => (
+  APIUtil.createDemo()
+    .then(
+      user => dispatch(receiveUser(user)),
+      errors => dispatch(receiveErrors(errors.responseJSON))
+    )
+);

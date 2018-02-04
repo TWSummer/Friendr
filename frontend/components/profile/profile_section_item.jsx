@@ -4,6 +4,10 @@ class profileSectionItem extends React.Component {
   constructor(props) {
     super(props);
     this.state=this.props.profile;
+    this.cancelEdit = this.cancelEdit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateResponse = this.updateResponse.bind(this);
+    this.keyDown = this.keyDown.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -35,30 +39,40 @@ class profileSectionItem extends React.Component {
       );
   }
 
-  cancelEdit(e) {
+  cancelEdit() {
     this.setState({edit: false});
+  }
+
+  keyDown(e) {
+    if (e.key === "Escape") {
+      this.cancelEdit();
+    }
   }
 
   render() {
     let itemContents;
     if (this.state.edit) {
       itemContents = (
-        <div>
-          <div className="add-shadow"></div>
+        <div onKeyDown={this.keyDown}>
+          <div
+            className="add-shadow"
+            onClick={this.cancelEdit}
+            ></div>
           <div className="foreground-box">
             <form>
               <textarea
                 value={this.state[this.props.type]}
                 className="update-textarea"
-                onChange={this.updateResponse.bind(this)}
+                onChange={this.updateResponse}
+                autoFocus={true}
                 ></textarea>
             </form>
             <button
-              onClick={this.handleSubmit.bind(this)}
+              onClick={this.handleSubmit}
               className="submit-response-button"
               >Submit</button>
             <button
-              onClick={this.cancelEdit.bind(this)}
+              onClick={this.cancelEdit}
               className="cancel-response-button"
               >Cancel</button>
           </div>

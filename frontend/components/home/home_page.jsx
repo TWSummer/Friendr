@@ -7,6 +7,7 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state={form: ""};
+    this.createDemoUser = this.createDemoUser.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,10 @@ class HomePage extends React.Component {
       this.props.clearErrors();
       this.setState({form: type});
     };
+  }
+
+  createDemoUser() {
+    this.props.createDemo();
   }
 
   render() {
@@ -59,6 +64,10 @@ class HomePage extends React.Component {
               onClick={this.showForm("signup").bind(this)}
               className="auth-button"
               >Sign Up</button>
+            <button
+              onClick={this.createDemoUser}
+              className="auth-button"
+              >Demo</button>
           </div>
         </header>
         {form}
