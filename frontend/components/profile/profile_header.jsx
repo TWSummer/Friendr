@@ -93,7 +93,7 @@ class ProfileHeader extends React.Component {
     }
     return (
       <div
-        className="profile-header-fields">
+        className="profile-header-fields expanded-header-color">
         {errorsField}
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label htmlFor="name">First Name</label>
