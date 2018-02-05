@@ -6,6 +6,12 @@ class Api::UsersController < ApplicationController
         birthdate: Date.today - 18.years,
         gender: "Prefer Not to Say",
         primary_img_url: "https://i.imgur.com/KD3v2vP.jpg")
+      @user.search_query = SearchQuery.new(
+        min_age: 18,
+        max_age: 99,
+        max_distance: 50,
+        active_within: 21
+      )
     if @user.save
       login(@user)
       render :show

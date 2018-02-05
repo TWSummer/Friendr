@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     post "users/demo", to: "users#demo_user"
     resource :session, only: [:create, :destroy]
     resources :questions, only: [:index, :create]
+    resources :friend_searches, only: [:index, :update]
   end
 end
