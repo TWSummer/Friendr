@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_one :search_query, dependent: :destroy
   has_many :question_answers, dependent: :destroy
 
+  has_many :question_friend_answers,
+  through: :question_answers,
+  source: :question_friend_answers
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

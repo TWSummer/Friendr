@@ -2,20 +2,32 @@ class Api::FriendSearchesController < ApplicationController
 
   def index
     @search_query = current_user.search_query
-    @search_result = User.all.includes(:profile).joins(:profile).where("users.id != #{current_user.id}")
-    @search_result = @search_result.where("users.demo IS NULL")
+    @search_result = User.all
+    @cur_user = User.all
+                   .includes(:profile)
+                   .includes(:question_answers)
+                   .includes(:question_friend_answers)
+                   .where("id = #{current_user.id}").first
     add_search_criteria
 
     render :index
   end
 
   def update
+    @search_query = current_user.search_query
 
   end
 
   private
 
   def add_search_criteria
+    @search_result = @search_result
+                    .includes(:profile)
+                    .includes(:question_answers)
+                    .includes(:question_friend_answers)
+                    .joins(:profile)
+                    .where("users.id != #{current_user.id}")
+                    .where("users.demo IS NULL")
     if @search_query.min_age
       @search_result = @search_result.where(profiles: {birthdate: Date.today - 200.years .. Date.today - @search_query.min_age.years})
     end
@@ -54,6 +66,6 @@ class Api::FriendSearchesController < ApplicationController
     c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1 - a))
 
     rm * c
-end
+  end
 
 end

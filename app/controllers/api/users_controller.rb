@@ -9,7 +9,6 @@ class Api::UsersController < ApplicationController
       @user.search_query = SearchQuery.new(
         min_age: 18,
         max_age: 99,
-        max_distance: 50,
         active_within: 21
       )
     if @user.save
