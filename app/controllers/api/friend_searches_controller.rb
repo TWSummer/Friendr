@@ -3,6 +3,7 @@ class Api::FriendSearchesController < ApplicationController
   def index
     @search_query = current_user.search_query
     @search_result = User.all.includes(:profile).joins(:profile).where("users.id != #{current_user.id}")
+    @search_result = @search_result.where("users.demo IS NULL")
     add_search_criteria
 
     render :index
