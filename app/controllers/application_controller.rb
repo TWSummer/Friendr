@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :calculate_match_percentage
+  helper_method :current_user, :calculate_match_percentage, :distance
 
   def current_user
     before = !!@current_user
@@ -30,6 +30,23 @@ class ApplicationController < ActionController::Base
       end
     end
     session.delete(:session_token)
+  end
+
+  def distance(loc1, loc2)
+    return nil if loc1[0].nil? || loc1[1].nil? || loc2[0].nil? || loc2[1].nil?
+    rad_per_deg = Math::PI / 180
+    rm = 3959
+
+    dlat_rad = (loc2[0] - loc1[0]) * rad_per_deg
+    dlon_rad = (loc2[1] - loc1[1]) * rad_per_deg
+
+    lat1_rad, lon1_rad = loc1.map { |i| i * rad_per_deg }
+    lat2_rad, lon2_rad = loc2.map { |i| i * rad_per_deg }
+
+    a = Math.sin(dlat_rad / 2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
+    c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1 - a))
+
+    (rm * c).round
   end
 
   def calculate_match_percentage(user1, user2)

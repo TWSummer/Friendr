@@ -1,8 +1,10 @@
-json.extract! @search_query, :min_age, :max_age, :max_distance, :active_within
+json.extract! @search_query, :id, :min_age, :max_age, :max_distance, :active_within
 json.results do
   json.array! @search_result do |result|
     json.name result.profile.name
     json.age result.profile.age
-    json.match calculate_match_percentage(@cur_user, result)
+    json.compatibility calculate_match_percentage(@cur_user, result).round(3) * 100
+    json.distance distance([@cur_user.profile.latitude, @cur_user.profile.longitude],
+                           [result.profile.latitude, result.profile.longitude])
   end
 end

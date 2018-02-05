@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import profileReducer from './profile_reducer';
+import searchReducer from './search_reducer';
 
 const entitiesReducer = combineReducers({
-  profiles: profileReducer
+  profiles: profileReducer,
+  search: searchReducer
 });
 
 export default entitiesReducer;
