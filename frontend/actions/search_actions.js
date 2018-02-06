@@ -23,7 +23,7 @@ export const fetchSearch = () => dispatch => (
 
 
 export const updateSearch = formSearch => dispatch => (
-  APIUtil.updateProfile(formSearch)
+  APIUtil.updateSearch(formSearch)
     .then(
       search => dispatch(receiveSearch(search)),
       errors => dispatch(receiveErrors(errors.responseJSON))
