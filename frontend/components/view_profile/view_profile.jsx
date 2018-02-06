@@ -20,7 +20,10 @@ class Profile extends React.Component {
           <ViewProfileHeader
             profile={this.props.profile}/>
           <main className="main-profile">
-
+          <ViewProfileSection
+            profile={this.props.profile}/>
+          <ViewProfileAside
+            profile={this.props.profile}/>
           </main>
         </div>
       );
@@ -34,9 +37,3 @@ class Profile extends React.Component {
 }
 
 export default Profile;
-
-
-// <ViewProfileSection
-//   profile={this.props.profile}/>
-// <ViewProfileAside
-//   profile={this.props.profile}/>
