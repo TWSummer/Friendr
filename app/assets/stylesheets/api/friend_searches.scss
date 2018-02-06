@@ -105,3 +105,72 @@
   color: #f75;
   margin-bottom: 6px;
 }
+
+.search-results {
+}
+
+.search-result-item {
+  display: inline-block;
+  margin-bottom: 30px;
+  border: 1px solid #aaa;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.search-result-item:nth-of-type(3n+2) {
+  margin: 0 20px;
+  margin-bottom: 30px;
+}
+
+.search-result-image {
+  width: 280px;
+  height: 280px;
+  margin-bottom: 15px;
+}
+
+.search-result-name-and-age {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-result-name-and-age p {
+  font-size: 24px;
+  margin: 0 10px;
+  color: #999;
+}
+
+.search-result-name-and-age h3 {
+  font-size: 24px;
+}
+
+.search-result-name-and-age h4 {
+  font-size: 22px;
+  color: #999;
+}
+
+.search-result-compatibility {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-result-compatibility h2 {
+  font-size: 24px;
+}
+
+.search-result-compatibility h5 {
+  font-size: 14px;
+  color: #999;
+}
+
+.search-result-distance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-result-distance p {
+  font-size: 18px;
+  color: #999;
+}

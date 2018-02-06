@@ -1,5 +1,6 @@
 import React from 'react';
 import { merge } from 'lodash';
+import SearchResultItem from './search_result_item';
 
 class FriendSearch extends React.Component {
   constructor(props) {
@@ -223,7 +224,13 @@ class FriendSearch extends React.Component {
           </span>
         </header>
         <div className="search-results">
-
+          {
+            this.props.resultsByCompatibility ? this.props.resultsByCompatibility.map( (result) => {
+              return (
+                <SearchResultItem user={result} key ={result.id} />
+              );
+            }) : ""
+          }
         </div>
       </div>
     );
