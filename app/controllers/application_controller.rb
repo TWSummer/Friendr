@@ -73,10 +73,20 @@ class ApplicationController < ActionController::Base
       end
     end
     return 0 if total_similar_questions == 0
-    if ((current_good_score / current_total_score.to_f) + (other_good_score / other_total_score.to_f)) / 2 - (1 / total_similar_questions.to_f) < 0
+    if current_total_score == 0
+      i_rate_them = 0
+    else
+      i_rate_them = (current_good_score / current_total_score.to_f)
+    end
+    if other_total_score == 0
+      they_rate_me = 0
+    else
+      they_rate_me = (other_good_score / other_total_score.to_f)
+    end
+    if (i_rate_them + they_rate_me) / 2 - (1 / total_similar_questions.to_f) < 0
       return 0
     else
-      return ((current_good_score / current_total_score.to_f) + (other_good_score / other_total_score.to_f)) / 2 - (1 / total_similar_questions.to_f)
+      return (i_rate_them + they_rate_me) / 2 - (1 / total_similar_questions.to_f)
     end
   end
 end
