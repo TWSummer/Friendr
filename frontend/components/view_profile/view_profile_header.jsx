@@ -20,6 +20,24 @@ class ProfileHeader extends React.Component {
                 <p>•</p>
                 <h3>{this.props.profile.age}</h3>
               </div>
+              <div className="view-name-box">
+                <h2>{this.props.profile.compatibility}</h2>
+                <h4>&nbsp; % Compatible</h4>
+                <p>•</p>
+                {
+                  this.props.profile.distance ? (
+                    <div className="flex-div">
+                      <h4>Distance: &nbsp;</h4>
+                      <h3>{this.props.profile.distance} Miles</h3>
+                    </div>
+                  ) : (
+                    <div className="flex-div">
+                      <h4>Distance: &nbsp;</h4>
+                      <h3>Unknown</h3>
+                    </div>
+                  )
+                }
+              </div>
             </div>
         </main>
       </header>

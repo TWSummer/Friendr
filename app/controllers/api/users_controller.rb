@@ -22,10 +22,19 @@ class Api::UsersController < ApplicationController
   def fetch_user
     username = params[:username]
     username = current_user.username if username == "undefined"
-    @user = User.find_by(username: username)
+    @user = User.all
+                   .includes(:profile)
+                   .includes(:question_answers)
+                   .includes(:question_friend_answers)
+                   .where(username: username).first
+     @cur_user = User.all
+                    .includes(:profile)
+                    .includes(:question_answers)
+                    .includes(:question_friend_answers)
+                    .where("id = #{current_user.id}").first
     if @user
       @profile = @user.profile
-      render "api/profiles/show"
+      render "api/profiles/view"
     else
       render json: ["Unable to locate this user"], status: 404
     end

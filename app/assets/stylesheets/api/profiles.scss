@@ -54,6 +54,7 @@
   color: #fff;
   font-weight: 300;
   padding-right: 15px;
+  text-shadow: 1px 1px 2px #000;
 }
 
 .profile-header-fields h3 {
@@ -258,17 +259,28 @@
   width: 360px;
 }
 
-.view-profile-header-fields h3 {
+.view-name-box h1 {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.view-name-box h2 {
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.view-name-box h3 {
   font-size: 18px;
   color: #fff;
   margin: 10px 0;
 }
 
-.view-name-box h1 {
-  font-size: 36px;
-  color: #fff;
-  font-weight: 300;
-  padding-right: 15px;
+.view-name-box h4 {
+  font-size: 16px;
+  color: #ccc;
 }
 
 .view-name-box {
@@ -279,6 +291,11 @@
 }
 
 .view-name-box p {
-  padding-right: 15px;
+  padding: 0 15px;
   color: #fff;
+}
+
+.flex-div {
+  display: flex;
+  align-items: center;
 }
