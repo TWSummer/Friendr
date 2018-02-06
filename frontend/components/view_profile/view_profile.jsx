@@ -1,4 +1,7 @@
 import React from 'react';
+import ViewProfileHeader from './view_profile_header';
+import ViewProfileSection from './view_profile_section';
+import ViewProfileAside from './view_profile_aside';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -13,7 +16,13 @@ class Profile extends React.Component {
     let profileBody;
     if (this.props.profile) {
       profileBody = (
-        <p>This is the profile of {this.props.profile.name}</p>
+        <div>
+          <ViewProfileHeader
+            profile={this.props.profile}/>
+          <main className="main-profile">
+
+          </main>
+        </div>
       );
     }
     return (
@@ -25,3 +34,9 @@ class Profile extends React.Component {
 }
 
 export default Profile;
+
+
+// <ViewProfileSection
+//   profile={this.props.profile}/>
+// <ViewProfileAside
+//   profile={this.props.profile}/>

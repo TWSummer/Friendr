@@ -14,8 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    fetchProfile: () => dispatch(fetchProfile(ownProps.match.params.username)),
-    updateProfile: (profile) => dispatch(updateProfile(profile))
+    fetchProfile: () => dispatch(fetchProfile(ownProps.match.params.username))
   });
 };
 
