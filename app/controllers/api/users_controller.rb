@@ -43,6 +43,11 @@ class Api::UsersController < ApplicationController
       looking_for: "I'm looking for friends who enjoy listening to and playing music. I can sing pretty well and I would love to meet new people that I can play with. I also make great vegan snickerdoodles, and I'd be stoked if you have other vegan recipes that we can exchange!",
       primary_img_url: "https://i.imgur.com/iAvW6U3.jpg"
     )
+    @user.search_query = SearchQuery.new(
+      min_age: 18,
+      max_age: 99,
+      active_within: 21
+    )
     if @user.save
       login(@user)
       render :show

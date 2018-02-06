@@ -5,7 +5,7 @@ import SearchResultItem from './search_result_item';
 class FriendSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { search: this.props.search };
+    this.state = { search: this.props.search, sortType: "Compatibility" };
     this.searchQueryString = this.searchQueryString.bind(this);
     this.modifySearchForm = this.modifySearchForm.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -13,6 +13,7 @@ class FriendSearch extends React.Component {
     this.setAnywhere = this.setAnywhere.bind(this);
     this.setAnytime = this.setAnytime.bind(this);
     this.includeErrors = this.includeErrors.bind(this);
+    this.changeSort = this.changeSort.bind(this);
   }
 
   componentDidMount() {
@@ -106,6 +107,10 @@ class FriendSearch extends React.Component {
         }
       </ul>
     );
+  }
+
+  changeSort(e) {
+    this.setState({sortType: e.target.value});
   }
 
   modifySearchForm() {
@@ -224,8 +229,26 @@ class FriendSearch extends React.Component {
           </span>
         </header>
         <div className="search-results">
+          <form className="sort-select-form">
+            <label>Sort By
+              <select
+                className="sort-select"
+                value={this.state.sortType}
+                onChange={this.changeSort}>
+                <option value="Compatibility">Compatibility</option>
+                <option value="Distance">Distance</option>
+              </select>
+            </label>
+          </form>
           {
-            this.props.resultsByCompatibility ? this.props.resultsByCompatibility.map( (result) => {
+            this.props.resultsByCompatibility ?
+            this.state.sortType === "Compatibility" ?
+            this.props.resultsByCompatibility.map( (result) => {
+              return (
+                <SearchResultItem user={result} key ={result.id} />
+              );
+            }) :
+            this.props.resultsByDistance.map( (result) => {
               return (
                 <SearchResultItem user={result} key ={result.id} />
               );

@@ -2,6 +2,7 @@ json.extract! @search_query, :id, :min_age, :max_age, :max_distance, :active_wit
 json.results do
   json.array! @search_result do |result|
     json.id result.id
+    json.username result.username
     json.name result.profile.name
     json.age result.profile.age
     json.primary_img_url result.profile.primary_img_url

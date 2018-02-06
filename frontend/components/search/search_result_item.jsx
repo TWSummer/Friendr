@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SearchResultItem extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class SearchResultItem extends React.Component {
 
   render() {
     return (
-      <div className="search-result-item">
+      <Link to={`/profile/${this.props.user.username}`} className="search-result-item">
         <img src={this.props.user.primary_img_url} className="search-result-image"/>
         <div className="search-result-name-and-age">
           <h3>{this.props.user.name}</h3>
@@ -28,7 +29,7 @@ class SearchResultItem extends React.Component {
           }
         </div>
         <br/>
-      </div>
+      </Link>
     );
   }
 }
