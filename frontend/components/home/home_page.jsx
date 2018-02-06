@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AuthForm from './auth_form';
 import SiteFooter from '../site_footer';
+import Slideshow from './slideshow';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -70,10 +71,10 @@ class HomePage extends React.Component {
               >Demo</button>
           </div>
         </header>
-        {form}
         <main className="page-main">
-
+          <Slideshow />
         </main>
+        {form}
         <SiteFooter />
       </div>
     );
