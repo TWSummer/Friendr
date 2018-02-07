@@ -306,23 +306,28 @@
 }
 
 .upload-photo-button {
-  display: none;
-  color: #fff;
+  display: block;
+  color: rgba(255, 255, 255, 0);
   font-size: 18px;
   padding: 8px 10px;
   border-radius: 6px;
-  border: 1px solid #aaa;
-  background-color: #104da1;
   position: absolute;
   bottom: -20px;
   left: 10px;
+  background-color: rgba(255,255,255,0);
+  transition: background-color 0.4s ease-in;
+  transition: color 0.4s ease-in;
 }
 
 .profile-image-holder:hover ~ button {
   display: block;
+  background-color: #104da1;
+  color: #fff;
 }
 
 .upload-photo-button:hover {
   display: block;
   background-color: #368;
+  color: #fff;
+  transition: background-color 0s;
 }
