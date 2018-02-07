@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
   attr_reader :password
+  validate :no_illegal_characters
 
   has_one :profile, dependent: :destroy
   has_one :search_query, dependent: :destroy
@@ -36,5 +37,11 @@ class User < ApplicationRecord
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64
     save
+  end
+
+  def no_illegal_characters
+    if [".", "/", "?", "\"", "\'"].any? { |char| username.include?(char)}
+      errors.add(:username, "cannot include the following characters . / ? \" \'")
+    end
   end
 end
