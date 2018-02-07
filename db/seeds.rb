@@ -34,18 +34,49 @@ profile_photos = [
   "http://res.cloudinary.com/twsummer/image/upload/v1517967376/i1unb82vix5e8zdacu0c.jpg"
 ]
 
+about = [
+  "I love cats. I love every kind of cat, and I just want to hug all of them, but I can't. I can't hug every cat! :\'-(",
+  "I am an avid candle enthusiast. Show me any candle and I can tell you its name, manufacturer, wax composition, melting point, and 3 ways that it could be made better. My bedroom, or 'den of candles' as I like to call it, is a place of solitude and sanctuary where I practice my craft.",
+  "5 things about me:
+
+  1. I sleep in my jeans.
+
+  2. I can name every pokemon.
+
+  3. Watermelon > Cantaloupe
+
+  4. I spend at least 12 hours per day in my basement.
+
+  5. I am quality friend material",
+  "What can I say other than I am a great friend who totally will not come to your house and watch you while you are sleeping. What more could you ask for?"
+]
+
+looking = [
+  "10-15 test subjects who will perform humiliating acts on live TV for menial amounts of money. What do you say, friend?",
+  "True friendship multiplies the good in life and divides its evils. Strive to have friends, for life without friends is like life on a desert island… to find one real friend in a lifetime is good fortune; to keep them is a blessing.",
+  "True friendship comes when the silence between two people is comfortable."
+]
+
 2.times do
-  user = User.create({
+  user = User.create(
     username: SecureRandom.urlsafe_base64,
     password: "password"
-  })
-  user.profile = Profile.create({
+  )
+  user.profile = Profile.create(
     name: Faker::Name.first_name,
-    birthdate: Date.today - (rand(62)+18).years + rand(365).days,
+    birthdate: Date.today - (rand(62) + 18).years + rand(365).days,
     latitude: rand(23.2) + 25.8,
-    longitude: rand(58.3)-125.0,
-    gender: ["Male", "Female", "Other", "Prefer Not to Say"].shuffle.first
-    })
+    longitude: rand(58.3) - 125.0,
+    gender: ["Male", "Female", "Other", "Prefer Not to Say"].shuffle.first,
+    about_me: about.shuffle.first,
+    looking_for: looking.shuffle.first,
+    primary_img_url: profile_photos.shuffle.first
+    )
+  user.search_query = SearchQuery.new(
+    min_age: 18,
+    max_age: 99,
+    active_within: 21
+  )
 end
 
 
