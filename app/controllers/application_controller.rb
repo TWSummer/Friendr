@@ -62,10 +62,10 @@ class ApplicationController < ActionController::Base
             total_similar_questions += 1
             current_total_score += question_answer.importance
             other_total_score += other_answer.importance
-            if user1.question_friend_answers.any? { |friend_answer| friend_answer.question_option_id == other_answer.question_option_id }
+            if question_answer.question_friend_answers.any? { |friend_answer| friend_answer.question_option_id == other_answer.question_option_id }
               current_good_score += question_answer.importance
             end
-            if user2.question_friend_answers.any? { |friend_answer| friend_answer.question_option_id == question_answer.question_option_id }
+            if other_answer.question_friend_answers.any? { |friend_answer| friend_answer.question_option_id == question_answer.question_option_id }
               other_good_score += other_answer.importance
             end
           end

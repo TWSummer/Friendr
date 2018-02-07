@@ -48,7 +48,10 @@ about = [
   4. I spend at least 12 hours per day in my basement.
 
   5. I am quality friend material",
-  "What can I say other than I am a great friend who totally will not come to your house and watch you while you are sleeping. What more could you ask for?"
+  "What can I say other than I am a great friend who totally will not come to your house and watch you while you are sleeping. What more could you ask for?",
+  "I am a consultant by day and an urban adventurer by night. I am an ambitious young urbanite that enjoys writing my life story as if I am the protagonist of a novel, observing the world from as many angles as possible, and helping other people achieve their dreams.",
+  "I am a collector of non-Newtonian fluids. I currently have 47 examples of fluids in my home with viscosities that are dependent on shear rate. I hope to increase this to 60 in the next 12 months.",
+  ""
 ]
 
 looking = [
@@ -59,10 +62,33 @@ looking = [
   "Wishing to be friends is quick work, but friendship is a slow ripening fruit.",
   "Do I not destroy my enemies when I make them my friends?",
   "We cannot tell the precise moment when friendship is formed. As in filling a vessel drop by drop, there is at last a drop which makes it run over; so in a series of kindnesses there is at last one which makes the heart run over.",
-  ""
+  "\"No person is your friend who demands your silence, or denies your right to grow.\" -Alice Walker
+
+  I want to find a friend who I can grow together with!",
+  "You can make more friends in two months by becoming interested in other people than you can in two years by trying to get other people interested in you.",
+  "I want to meet people who will come hiking with me and will gawk at the awesome variety of fungi that we come across, and will help me identify them.
+
+  I use the iNaturalist App currently, which is a lot of fun, but it would be great to meet friends who are also good at identifying fungi!",
+  "I have a goal to wear pants belonging to 40 different people in 40 days. Please send me a message if you have a pair of pants that you would be willing to let me try.
+
+  Bonus points if they are funny pants!",
+  "Message me if you are any of the following:
+
+  1. Good at high fives
+
+  2. A collector of stamps
+
+  3. Able to square dance
+
+  4. Willing to teach me how to use chopsticks
+
+  5. Interested in playing Overwatch with me
+
+  6. A rugby fan",
+  "A close friend who will come with me on a trip to Belize, the Galapagos, Iceland, or Madagascar!",
 ]
 
-2.times do
+50.times do
   user = User.new(
     username: SecureRandom.urlsafe_base64,
     password: "password"
@@ -83,6 +109,22 @@ looking = [
     active_within: 21
   )
   user.save
+  Question.all.each do |question|
+    question_answer = QuestionAnswer.create(
+      question: question,
+      user: user,
+      question_option: question.question_options.shuffle.first,
+      importance: [1, 3, 7].shuffle.first
+    )
+    options = question.question_options.shuffle
+    friend_answers = options.take(rand(question.question_options.length - 2) + 1)
+    friend_answers.each do |friend_answer|
+      QuestionFriendAnswer.create(
+        question_answer: question_answer,
+        question_option: friend_answer
+      )
+    end
+  end
 end
 
 

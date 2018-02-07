@@ -5,8 +5,7 @@ class Api::FriendSearchesController < ApplicationController
     @search_result = User.all
     @cur_user = User.all
                    .includes(:profile)
-                   .includes(:question_answers)
-                   .includes(:question_friend_answers)
+                   .includes(question_answers: :question_friend_answers)
                    .where("id = #{current_user.id}").first
     add_search_criteria
 
@@ -20,8 +19,7 @@ class Api::FriendSearchesController < ApplicationController
         @search_result = User.all
         @cur_user = User.all
                        .includes(:profile)
-                       .includes(:question_answers)
-                       .includes(:question_friend_answers)
+                       .includes(question_answers: :question_friend_answers)
                        .where("id = #{current_user.id}").first
         add_search_criteria
 
@@ -41,9 +39,7 @@ class Api::FriendSearchesController < ApplicationController
   def add_search_criteria
     @search_result = @search_result
                     .includes(:profile)
-                    .includes(:question_answers)
-                    .includes(:question_friend_answers)
-                    .joins(:profile)
+                    .includes(question_answers: :question_friend_answers)
                     .where("users.id != #{current_user.id}")
                     .where("users.demo IS NULL")
     if @search_query.min_age
