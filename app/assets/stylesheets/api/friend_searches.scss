@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.full-search-component {
+  background-color: #eee;
+}
+
 .search-header {
   height: 102px;
   background-color: #104da1;
@@ -110,6 +114,7 @@
 }
 
 .search-result-item {
+  background-color: #fff;
   display: inline-block;
   margin-bottom: 30px;
   border: 1px solid #aaa;

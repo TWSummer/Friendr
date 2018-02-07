@@ -221,7 +221,7 @@ class FriendSearch extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="full-search-component">
         <header className="search-header">
           {this.modifySearchForm()}
           <span className="search-parameters">
