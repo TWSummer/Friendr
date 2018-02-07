@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.profile = Profile.new(
-        name: @user.username,
+        name: @user.username[0..23],
         birthdate: Date.today - 18.years,
         gender: "Prefer Not to Say",
         primary_img_url: "https://i.imgur.com/KD3v2vP.jpg")

@@ -34,7 +34,19 @@ profile_photos = [
   "http://res.cloudinary.com/twsummer/image/upload/v1517967376/i1unb82vix5e8zdacu0c.jpg"
 ]
 
-
+2.times do
+  user = User.create({
+    username: SecureRandom.urlsafe_base64,
+    password: "password"
+  })
+  user.profile = Profile.create({
+    name: Faker::Name.first_name,
+    birthdate: Date.today - (rand(62)+18).years + rand(365).days,
+    latitude: rand(23.2) + 25.8,
+    longitude: rand(58.3)-125.0,
+    gender: ["Male", "Female", "Other", "Prefer Not to Say"].shuffle.first
+    })
+end
 
 
 

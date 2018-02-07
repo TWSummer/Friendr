@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   validates :user, :name, :birthdate, :gender, presence: true
   validates :user, uniqueness: true
+  validates :name, length: { maximum: 24 }
   validates :gender, inclusion: { in: ["Male", "Female", "Other", "Prefer Not to Say"]}
   validates :latitude, :longitude, numericality: true, allow_nil: true
   validate :birthdate_appropriate
