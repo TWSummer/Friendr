@@ -11,3 +11,4 @@ json.results do
                            [result.profile.latitude, result.profile.longitude])
   end
 end
+@search_result = nil
