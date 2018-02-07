@@ -315,8 +315,7 @@
   bottom: -20px;
   left: 10px;
   background-color: rgba(255,255,255,0);
-  transition: background-color 0.4s ease-in;
-  transition: color 0.4s ease-in;
+  transition: background-color 0.4s ease-in, color 0.4s ease-in;
 }
 
 .profile-image-holder:hover ~ button {
