@@ -40,13 +40,22 @@ class profileSectionItem extends React.Component {
   }
 
   cancelEdit() {
-    this.setState({edit: false});
+    this.setState({
+      edit: false,
+      [this.props.type]: this.props.profile[this.props.type]
+    });
   }
 
   keyDown(e) {
     if (e.key === "Escape") {
       this.cancelEdit();
     }
+  }
+
+  formatText(text) {
+    return text.split('\n').map((item, i) => {
+      return <p>{item}<br/></p>;
+    });
   }
 
   render() {
@@ -86,7 +95,7 @@ class profileSectionItem extends React.Component {
         {itemContents}
         <div>
           <p className="response-text">
-            {this.state[this.props.type]}
+            {this.formatText(this.state[this.props.type])}
           </p>
           <button
             className="edit-response-button"

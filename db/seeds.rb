@@ -54,11 +54,16 @@ about = [
 looking = [
   "10-15 test subjects who will perform humiliating acts on live TV for menial amounts of money. What do you say, friend?",
   "True friendship multiplies the good in life and divides its evils. Strive to have friends, for life without friends is like life on a desert island… to find one real friend in a lifetime is good fortune; to keep them is a blessing.",
-  "True friendship comes when the silence between two people is comfortable."
+  "True friendship comes when the silence between two people is comfortable.",
+  "A friend is one that knows you as you are, understands where you have been, accepts what you have become, and still, gently allows you to grow.",
+  "Wishing to be friends is quick work, but friendship is a slow ripening fruit.",
+  "Do I not destroy my enemies when I make them my friends?",
+  "We cannot tell the precise moment when friendship is formed. As in filling a vessel drop by drop, there is at last a drop which makes it run over; so in a series of kindnesses there is at last one which makes the heart run over.",
+  ""
 ]
 
 2.times do
-  user = User.create(
+  user = User.new(
     username: SecureRandom.urlsafe_base64,
     password: "password"
   )
@@ -77,6 +82,7 @@ looking = [
     max_age: 99,
     active_within: 21
   )
+  user.save
 end
 
 
