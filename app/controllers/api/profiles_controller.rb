@@ -23,6 +23,7 @@ class Api::ProfilesController < ApplicationController
       :latitude,
       :longitude,
       :about_me,
-      :looking_for)
+      :looking_for,
+      :primary_img_url)
   end
 end

@@ -5,6 +5,8 @@ class ProfileHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.profile;
+    this.showUploadForm = this.showUploadForm.bind(this);
+    this.uploadCallback = this.uploadCallback.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -156,6 +158,28 @@ class ProfileHeader extends React.Component {
     });
   }
 
+  showUploadForm() {
+    cloudinary.openUploadWidget(cloudinary_options, this.uploadCallback)
+  }
+
+  uploadCallback(errors, successDetails) {
+    if (errors === null) {
+      this.props.updateProfile({
+        id: this.state.id,
+        user_id: this.state.user_id,
+        primary_img_url: successDetails[0].url
+      })
+      .then(
+        () => this.setState({
+          header: false,
+          showErrors: false,
+          primary_img_url: successDetails[0].url
+        }),
+        () => this.setState({showErrors: true})
+      );
+    }
+  }
+
   render() {
     let profileHeaderFields;
     if (this.state.header) {
@@ -175,6 +199,10 @@ class ProfileHeader extends React.Component {
             className="profile-image-holder"
             src={this.state.primary_img_url}
             alt="Profile image"/>
+          <button
+            className="upload-photo-button"
+            onClick={this.showUploadForm}
+            >Upload</button>
           {profileHeaderFields}
         </main>
       </header>

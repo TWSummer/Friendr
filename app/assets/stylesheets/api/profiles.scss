@@ -304,3 +304,25 @@
   width: 170px;
   padding: 2px 10px;
 }
+
+.upload-photo-button {
+  display: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  background-color: #104da1;
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+}
+
+.profile-image-holder:hover ~ button {
+  display: block;
+}
+
+.upload-photo-button:hover {
+  display: block;
+  background-color: #368;
+}
