@@ -6,9 +6,13 @@ class viewProfileSectionItem extends React.Component {
   }
 
   formatText(text) {
-    return text.split('\n').map((item, i) => {
-      return <p key={i}>{item}<br/></p>;
-    });
+    if (text===null) {
+      return null;
+    } else {
+      return text.split('\n').map((item, i) => {
+        return <p key={i}>{item}<br/></p>;
+        });
+    }
   }
 
   render() {

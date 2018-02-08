@@ -62,7 +62,8 @@ class Api::FriendSearchesController < ApplicationController
     loc1 = [current_user.profile.latitude, current_user.profile.longitude]
     @search_result = @search_result.select do |result|
       loc2 = [result.profile.latitude, result.profile.longitude]
-      distance(loc1, loc2) <= @search_query.max_distance
+      dist = distance(loc1, loc2)
+      !dist.nil? && dist <= @search_query.max_distance
     end
   end
 
