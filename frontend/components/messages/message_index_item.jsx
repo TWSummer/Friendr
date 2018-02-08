@@ -15,6 +15,7 @@ class MessageIndexItem extends React.Component {
     this.cancelMessage = this.cancelMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.updateMessageBody = this.updateMessageBody.bind(this);
+    this.formatText = this.formatText.bind(this);
   }
 
   getPreview() {
@@ -64,6 +65,16 @@ class MessageIndexItem extends React.Component {
     this.setState({messageBody: e.target.value});
   }
 
+  formatText(text) {
+    if (text===null) {
+      return null;
+    } else {
+      return text.split('\n').map((item, i) => {
+        return <p key={i}>{item}<br/></p>;
+        });
+    }
+  }
+
   conversationItemContents() {
     if (this.state.show) {
       return (
@@ -79,7 +90,7 @@ class MessageIndexItem extends React.Component {
                         {this.messageTime(message)}
                       </h3>
                       <div className="my-message">
-                        <p>{message.body}</p>
+                        <h4>{this.formatText(message.body)}</h4>
                         <img src={this.props.session.currentUser.primary_img_url} />
                       </div>
                     </div>
@@ -90,7 +101,7 @@ class MessageIndexItem extends React.Component {
                       </h3>
                       <div className="their-message">
                         <img src={message.other_user.primary_img_url} />
-                        <p>{message.body}</p>
+                        <h4>{this.formatText(message.body)}</h4>
                       </div>
                     </div>
                   );
