@@ -21,7 +21,11 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = Message.new(
+      body: params[:message][:body],
+      sender_id: current_user.id,
+      recipient_id: params[:message][:recipient_id]
+    )
     if @message.save
       render :create
     else
