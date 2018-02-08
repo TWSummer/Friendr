@@ -7,7 +7,7 @@ class viewProfileSectionItem extends React.Component {
 
   formatText(text) {
     return text.split('\n').map((item, i) => {
-      return <p>{item}<br/></p>;
+      return <p key={i}>{item}<br/></p>;
     });
   }
 
@@ -15,13 +15,13 @@ class viewProfileSectionItem extends React.Component {
     return (
       <article className="profile-section-item">
         <div>
-          <p className="response-text">
+          <div className="response-text">
             {
               this.props.profile[this.props.type] ?
               this.formatText(this.props.profile[this.props.type]) :
               "I haven't written anything yet!"
             }
-          </p>
+          </div>
         </div>
       </article>
     );

@@ -54,7 +54,7 @@ class profileSectionItem extends React.Component {
 
   formatText(text) {
     return text.split('\n').map((item, i) => {
-      return <p>{item}<br/></p>;
+      return <p key={i}>{item}<br/></p>;
     });
   }
 
@@ -94,9 +94,9 @@ class profileSectionItem extends React.Component {
       <article className="profile-section-item">
         {itemContents}
         <div>
-          <p className="response-text">
+          <div className="response-text">
             {this.formatText(this.state[this.props.type])}
-          </p>
+          </div>
           <button
             className="edit-response-button"
             onClick={this.showEdit.bind(this)}>
