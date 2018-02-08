@@ -42,6 +42,7 @@ class ProfileHeader extends React.Component {
             </div>
             <MessageButton
               sendMessage={this.props.sendMessage}
+              messageErrors={this.props.messageErrors}
               profile={this.props.profile}/>
         </main>
       </header>

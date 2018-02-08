@@ -3,7 +3,7 @@ import React from 'react';
 class MessageButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {sendMessage: false, body: ""};
+    this.state = {sendMessage: false, body: "", showErrors: false};
     this.displayMessageForm = this.displayMessageForm.bind(this);
     this.cancelMessage = this.cancelMessage.bind(this);
     this.keyDown = this.keyDown.bind(this);
@@ -17,7 +17,8 @@ class MessageButton extends React.Component {
 
   cancelMessage() {
     this.setState({
-      sendMessage: false
+      sendMessage: false,
+      showErrors: false
     });
   }
 
@@ -36,12 +37,25 @@ class MessageButton extends React.Component {
       body: this.state.body,
       recipient_id: this.props.profile.user_id
     }).then(
-      () => this.setState({sendMessage: false, body: ""})
+      () => this.setState({sendMessage: false, body: "", showErrors: false}),
+      () => this.setState({showErrors: true})
     );
   }
 
   render() {
-    console.log(this.props);
+    let errorsField;
+    if (this.state.showErrors) {
+      errorsField = (
+        <ul>
+          {
+            this.props.messageErrors.map( (error, idx) => (
+              <li className="profile-errors" key={idx}>{error}</li>
+            ))
+          }
+        </ul>
+      );
+    }
+
     let messageForm;
     if (this.state.sendMessage) {
       messageForm = (
@@ -51,6 +65,7 @@ class MessageButton extends React.Component {
             onClick={this.cancelMessage}
             ></div>
           <div className="foreground-message-box">
+            {errorsField}
             <form>
               <textarea
                 value={this.state.body}

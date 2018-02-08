@@ -1,4 +1,4 @@
-import { RECEIVE_MESSAGE_ERRORS, RECEIVE_MESSAGE, RECEIVE_MESSAGES } from '../actions/profile_actions';
+import { RECEIVE_MESSAGE_ERRORS, RECEIVE_MESSAGE, RECEIVE_MESSAGES } from '../actions/message_actions';
 
 export default (state = [], action) => {
   Object.freeze(state);

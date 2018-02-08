@@ -16,7 +16,7 @@ class Api::MessagesController < ApplicationController
       @messages = sent.to_a.concat(received.to_a)
       render :show
     else
-      render json: "Could not locate conversation with this user", status: 422
+      render json: "Could not locate conversation with this user", status: 404
     end
   end
 
@@ -29,7 +29,7 @@ class Api::MessagesController < ApplicationController
     if @message.save
       render :create
     else
-      render json: @message.errors.full_messages
+      render json: @message.errors.full_messages, status: 422
     end
   end
 

@@ -86,7 +86,6 @@ class profileSectionItem extends React.Component {
               >Cancel</button>
           </div>
         </div>
-
       );
     }
 

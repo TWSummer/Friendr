@@ -19,7 +19,8 @@ class Profile extends React.Component {
         <div>
           <ViewProfileHeader
             profile={this.props.profile}
-            sendMessage={this.props.sendMessage}/>
+            sendMessage={this.props.sendMessage}
+            messageErrors={this.props.messageErrors}/>
           <main className="main-profile">
           <ViewProfileSection
             profile={this.props.profile}/>

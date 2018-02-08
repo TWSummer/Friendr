@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
     profile = Object.values(state.entities.profiles)[0];
   }
   return ({
-    profile
+    profile,
+    messageErrors: state.errors.message
   });
 };
 
