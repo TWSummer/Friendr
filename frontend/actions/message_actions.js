@@ -20,7 +20,7 @@ const receiveErrors = errors => ({
 });
 
 export const fetchMessages = () => dispatch => (
-  APIUtil.fetchProfile()
+  APIUtil.fetchMessages()
     .then(
       messages => dispatch(receiveMessages(messages)),
       errors => dispatch(receiveErrors(errors.responseJSON))

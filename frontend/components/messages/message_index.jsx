@@ -5,7 +5,12 @@ class MessageIndex extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchMessages();
+  }
+
   render() {
+    console.log(this.props.messages);
     return (
       <div>
         Look out, here come the messages!

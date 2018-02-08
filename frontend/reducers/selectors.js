@@ -12,6 +12,14 @@ let sortByDistance = (a, b) => {
   }
 };
 
+let sortByCreatedAt = (a, b) => {
+  if (a.created_at < b.created_at) {
+    return -1;
+  } else {
+    return 1;
+  }
+};
+
 export const resultsByCompatibility = (state) => {
   let results = state.entities.search.results;
   if (results) {
@@ -30,4 +38,27 @@ export const resultsByDistance = (state) => {
   } else {
     return [];
   }
+};
+
+export const messageConversations = (state) => {
+  let conversations = {};
+  let currentUserId = state.session.currentUser.id;
+  let messages = state.entities.messages.slice(0);
+  messages = messages.sort(sortByCreatedAt);
+  messages.forEach( message => {
+    if (message.sender_id === currentUserId) {
+      if (conversations[message.recipient_id] === undefined) {
+        conversations[message.recipient_id] = [message];
+      } else {
+        conversations[message.recipient_id].push(message);
+      }
+    } else {
+      if (conversations[message.sender_id] === undefined) {
+        conversations[message.sender_id] = [message];
+      } else {
+        conversations[message.sender_id].push(message);
+      }
+    }
+  });
+  return conversations;
 };

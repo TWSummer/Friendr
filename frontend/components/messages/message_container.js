@@ -1,17 +1,20 @@
 import MessageIndex from './message_index';
 import { connect } from 'react-redux';
-// import { fetchProfile, updateProfile } from '../../actions/profile_actions';
+import { fetchMessages, sendMessage } from '../../actions/message_actions';
+import { messageConversations } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
 
   return ({
-    session: state.session
+    session: state.session,
+    messages: messageConversations(state)
   });
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-
+    fetchMessages: () => dispatch(fetchMessages()),
+    sendMessage: message => dispatch(sendMessage(message))
   });
 };
 
