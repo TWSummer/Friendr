@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :questions, only: [:index, :create]
     resources :friend_searches, only: [:index, :update]
+    resources :messages, only: [:index]
+    get "messages/:username", to: "messages#show"
+    post "messages", to: "messages#create"
   end
 end

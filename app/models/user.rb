@@ -16,6 +16,16 @@ class User < ApplicationRecord
   through: :question_answers,
   source: :question_friend_answers
 
+  has_many :sent_messages,
+  primary_key: :id,
+  foreign_key: :sender_id,
+  class_name: "Message"
+
+  has_many :received_messages,
+  primary_key: :id,
+  foreign_key: :recipient_id, 
+  class_name: "Message"
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
