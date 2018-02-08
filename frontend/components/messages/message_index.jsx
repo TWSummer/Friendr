@@ -27,7 +27,9 @@ class MessageIndex extends React.Component {
                 <MessageIndexItem
                   conversation={this.props.messages[convoId]}
                   key={convoId}
-                  sendMessage={this.props.sendMessage}/>
+                  sendMessage={this.props.sendMessage}
+                  session={this.props.session}
+                  errors={this.props.errors}/>
               );
             })
           }

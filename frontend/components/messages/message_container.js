@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     session: state.session,
-    messages: messageConversations(state)
+    messages: messageConversations(state),
+    errors: state.errors.message
   });
 };
 

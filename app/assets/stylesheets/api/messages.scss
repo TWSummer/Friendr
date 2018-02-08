@@ -33,7 +33,7 @@
 }
 
 .conversation-item:hover {
-  background-color: #ffe;
+  background-color: #dfe;
   cursor: pointer;
 }
 
@@ -45,10 +45,17 @@
 }
 
 .conversation-item p {
-  align-self: center;
-  margin-left: 25px;
   width: 550px;
   color: #666;
+}
+
+.conversation-item div {
+  margin-left: 25px;
+}
+
+.conversation-item h2 {
+  margin: 8px 0;
+  font-size: 18px;
 }
 
 .conversation-item h5 {
@@ -56,4 +63,124 @@
   margin-left: auto;
   padding-right: 25px;
   color: #666;
+}
+
+.past-message-section {
+  width: 725px;
+  border: 1px solid #ccc;
+  margin-left: 25px;
+  padding: 25px;
+  padding-right: 0;
+  border-radius: 25px;
+}
+
+.messages-scroll-area {
+  max-height: 300px;
+  overflow-y: scroll;
+  padding-right: 25px;
+}
+
+.conversation-item-extended {
+  min-height: 100px;
+  background-color: #fff;
+  width: 800px;
+  margin: 10px auto;
+  border-radius: 50px;
+  padding: 25px 0;
+}
+
+.message-timestamp {
+  text-align: center;
+  margin: 10px 0;
+  color: #888;
+}
+
+.my-message, .their-message {
+  display: flex;
+  align-items: center;
+}
+
+.my-message {
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.my-message p, .their-message p {
+  max-width: 550px;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.my-message p {
+  background-color: #25a;
+}
+
+.their-message p {
+  background-color: #ddd;
+}
+
+.my-message img, .their-message img {
+  width: 34px;
+  height: 34px;
+  border-radius: 20px;
+  border: 3px solid #47d;
+}
+
+.my-message img {
+  margin-left: 20px;
+}
+
+.their-message img {
+  margin-right: 20px;
+}
+
+.message-reply-form textarea {
+  width: 730px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #999;
+  margin: 20px 25px;
+}
+
+.message-form-buttons {
+  display: flex;
+  width: 752px;
+  margin-left: 25px;
+  justify-content: space-between;
+}
+
+.message-form-buttons button {
+  width: 100px;
+  box-shadow: 2px 2px 4px #000;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+  margin: 0 50px;
+}
+
+.send-message-button {
+  background-color: #36d;
+  color: #fff;
+}
+
+.send-message-button:hover {
+  background-color: #58f;
+}
+
+.cancel-message-button {
+  background-color: #bbb;
+  color: #444;
+  border: 1px solid #999;
+}
+
+.cancel-message-button:hover {
+  background-color: #ddd;
+}
+
+.message-errors {
+  color: #f75;
+  padding-top: 10px;
+  margin-left: 50px;
 }
