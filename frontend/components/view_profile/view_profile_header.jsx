@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MessageButton from './message_button';
 
 class ProfileHeader extends React.Component {
   constructor(props) {
@@ -39,6 +40,9 @@ class ProfileHeader extends React.Component {
                 }
               </div>
             </div>
+            <MessageButton
+              sendMessage={this.props.sendMessage}
+              profile={this.props.profile}/>
         </main>
       </header>
     );

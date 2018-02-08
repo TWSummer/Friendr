@@ -1,6 +1,7 @@
 import ViewProfile from './view_profile';
 import { connect } from 'react-redux';
-import { fetchProfile, updateProfile } from '../../actions/profile_actions';
+import { fetchProfile } from '../../actions/profile_actions';
+import { sendMessage } from '../../actions/message_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let profile;
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    fetchProfile: () => dispatch(fetchProfile(ownProps.match.params.username))
+    fetchProfile: () => dispatch(fetchProfile(ownProps.match.params.username)),
+    sendMessage: (message) => dispatch(sendMessage(message))
   });
 };
 

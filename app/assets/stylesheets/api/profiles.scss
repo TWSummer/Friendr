@@ -330,3 +330,35 @@
   color: #fff;
   transition: background-color 0s;
 }
+
+.message-button-position {
+  position: absolute;
+  bottom: 20px;
+  left: 600px;
+}
+
+.message-button {
+  width: 99px;
+  border: 1px solid #57c;
+  box-shadow: 1px 1px 2px #000;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.message-button:hover {
+  border: 1px solid #fff;
+}
+
+.foreground-message-box {
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #000;
+  padding: 10px;
+  width: 490px;
+  left: -460px;
+  top: 100px;
+}
