@@ -3,6 +3,8 @@ class Api::MessagesController < ApplicationController
   def index
     @messages = Message.all.where("sender_id = ? or recipient_id = ?",
                                   current_user.id, current_user.id)
+                        .includes(sender: :profile)
+                        .includes(recipient: :profile)
     render :index
   end
 

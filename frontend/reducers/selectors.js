@@ -20,6 +20,19 @@ let sortByCreatedAt = (a, b) => {
   }
 };
 
+let addOrder = (conversations) => {
+  let userIds = Object.keys(conversations);
+  userIds = userIds.sort( (a, b) => {
+    if (conversations[a][conversations[a].length - 1].created_at <
+        conversations[b][conversations[b].length - 1].created_at) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+  conversations.order = userIds;
+};
+
 export const resultsByCompatibility = (state) => {
   let results = state.entities.search.results;
   if (results) {
@@ -60,5 +73,6 @@ export const messageConversations = (state) => {
       }
     }
   });
+  addOrder(conversations);
   return conversations;
 };
