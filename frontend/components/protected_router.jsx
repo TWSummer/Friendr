@@ -14,16 +14,18 @@ const ProtectedRouter = (props) => {
     <div>
       <SiteHeaderContainer />
       <Switch>
-        <Route exact path="/home" component={LoggedInHomeContainer} />
         <Route exact path="/profile" component={ProfileContainer} />
         <Route exact path="/profile/:username" component={ViewProfileContainer} />
         <Route exact path="/questions" component={QuestionContainer} />
         <Route exact path="/friends" component={FriendSearchContainer} />
         <Route exact path="/messages" component={MessageContainer} />
-        <Redirect from='/' to='/home'/>
+        <Redirect from='/' to='/profile'/>
       </Switch>
     </div>
   );
 };
 
 export default ProtectedRouter;
+
+
+// <Route exact path="/home" component={LoggedInHomeContainer} />
