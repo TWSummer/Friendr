@@ -12,27 +12,4 @@ Friendr is a site for finding and making friends that was inspired by OKCupid. I
 * Search gives users many options to choose what is important to them
 * Messaging features make it easy to meet new people and plan activities with new friends
 
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Profile Creation
