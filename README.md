@@ -14,4 +14,4 @@ Friendr is a site for finding and making friends that was inspired by OKCupid. I
 
 ### Profile Creation
 
-![Profile Creation](https://i.imgur.com/h3SqU4z.gifv)
+![Profile Creation](https://i.imgur.com/h3SqU4z.gif)
