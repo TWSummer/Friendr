@@ -11,6 +11,7 @@ class Api::UsersController < ApplicationController
         max_age: 99,
         active_within: 21
       )
+    generate_new_user_messages
     if @user.save
       login(@user)
       render :show
@@ -57,6 +58,7 @@ class Api::UsersController < ApplicationController
       max_age: 99,
       active_within: 21
     )
+    generate_demo_messages
     if @user.save
       login(@user)
       render :show
@@ -69,5 +71,36 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def generate_demo_messages
+    Message.create(
+      sender: @user,
+      recipient: User.find_by(username: "Theo"),
+      body: "Hey Theo,
+
+      Being a web developer sounds like a fascinating profession. I can't believe that you built a site like this one from scratch. It looks amazing!
+
+      I have never met someone with a pneumatic vegetable launcher before. How did you make it?"
+    )
+    Message.create(
+      sender: User.find_by(username: "Theo"),
+      recipient: @user,
+      body: "The pneumatic vegetable launcher is something I built after having a \"Pickle Eating Contest\" with my friends a few years ago that was not as successful as planned. After the competition I had a lot of pickles left over and I had to come up with something to do with all of them, so of course my first idea was... pneumatic vegetable launcher.
+
+      I built it out of PVC parts that I got from Home Depot. There is a base that has a hole with a valve that I took from a bike tire, that you can attach a bike pump to in order to build up the pressure. Then there is a valve that you can turn to release the pressure, and on the other end of the valve is a barrel that you can shove pickles into or whatever other vegetables will fit. My friends and I have had a lot of fun over the years shooting vegetables across the local park in my neighborhood, so in that sense the pickle eating contest became a big success!"
+    )
+  end
+
+  def generate_new_user_messages
+    Message.create(
+      sender: User.find_by(username: "Theo"),
+      recipient: @user,
+      body: "Welcome to Friendr!
+
+      Friendr is a site to help people make friends. It allows you to answer match questions and then quickly find the people in your area who are best suited to being your friend based on your answers.
+
+      If you have any questions about the App, feel free to send me a message!"
+    )
   end
 end

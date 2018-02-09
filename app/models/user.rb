@@ -19,12 +19,14 @@ class User < ApplicationRecord
   has_many :sent_messages,
   primary_key: :id,
   foreign_key: :sender_id,
-  class_name: "Message"
+  class_name: "Message",
+  dependent: :destroy
 
   has_many :received_messages,
   primary_key: :id,
-  foreign_key: :recipient_id, 
-  class_name: "Message"
+  foreign_key: :recipient_id,
+  class_name: "Message",
+  dependent: :destroy
 
   def password=(password)
     @password = password
