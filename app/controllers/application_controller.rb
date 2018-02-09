@@ -34,19 +34,20 @@ class ApplicationController < ActionController::Base
 
   def distance(loc1, loc2)
     return nil if loc1[0].nil? || loc1[1].nil? || loc2[0].nil? || loc2[1].nil?
-    rad_per_deg = Math::PI / 180
-    rm = 3959
+    radians_per_degree = Math::PI / 180
+    earth_radius_miles = 3959
 
-    dlat_rad = (loc2[0] - loc1[0]) * rad_per_deg
-    dlon_rad = (loc2[1] - loc1[1]) * rad_per_deg
+    latitude_difference = (loc2[0] - loc1[0]) * radians_per_degree
+    longitude_difference = (loc2[1] - loc1[1]) * radians_per_degree
 
-    lat1_rad, lon1_rad = loc1.map { |i| i * rad_per_deg }
-    lat2_rad, lon2_rad = loc2.map { |i| i * rad_per_deg }
+    lat1_rad, lon1_rad = loc1.map { |i| i * radians_per_degree }
+    lat2_rad, lon2_rad = loc2.map { |i| i * radians_per_degree }
 
-    a = Math.sin(dlat_rad / 2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
+    a = Math.sin(latitude_difference / 2)**2 + Math.cos(lat1_rad) *
+        Math.cos(lat2_rad) * Math.sin(longitude_difference/2)**2
     c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1 - a))
 
-    (rm * c).round
+    (earth_radius_miles * c).round
   end
 
   def calculate_match_percentage(user1, user2)
