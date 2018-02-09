@@ -28,33 +28,31 @@ Profile creation includes several distinct features.
 A user's location is stored in the database as a pair of latitude and longitude coordinates. In order to make setting this location a simple process for users, Friendr takes advantage of the Google Maps API. When users click to edit the header of their profile they will be shown a map centered on the location they currently have set in the database with a marker at that location (if no location has been set, the map is defaulted to show San Francisco). Users can scroll and zoom on the map to find their location. An event listener has been set to respond when a user clicks on the map by setting a marker to that location and updating the React Component's state:
 
 `
+  listenForClick(marker) {
 
-listenForClick(marker) {
+      google.maps.event.addListener(this.map, 'click', (e) => {
 
-    google.maps.event.addListener(this.map, 'click', (e) => {
+        marker.setMap(null);
 
-      marker.setMap(null);
+        marker = new google.maps.Marker({
 
-      marker = new google.maps.Marker({
+            position: e.latLng,
 
-          position: e.latLng,
+            map: this.map
 
-          map: this.map
+        });
+
+        this.setState({
+
+          latitude: e.latLng.lat(),
+
+          longitude: e.latLng.lng()
+
+        });
 
       });
 
-      this.setState({
-
-        latitude: e.latLng.lat(),
-
-        longitude: e.latLng.lng()
-
-      });
-
-    });
-
-  }
-  
+    }
 `
 
 ### Messaging
