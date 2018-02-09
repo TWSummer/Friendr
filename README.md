@@ -137,4 +137,12 @@ Finally, the crux of the searching algorithm is the compatibility calculation. I
 
 ![Messaging](https://i.imgur.com/400OXej.gif)
 
-More details
+## Future Features
+
+* Landing page to show when users log in showing an assortment of friends based on their search criteria (instead of taking users directly to their profile page)
+
+* Using web sockets with messaging feature so that chats will automatically update when new messages are received
+
+* Adding additional features to search (search by gender, search for keywords on a user's profile)
+
+* Doing the compatibility calculation as part of the friend search SQL query, eliminating the need to create Ruby objects for each of the `question_answers` and `question_friend_answers` thereby improving search efficiency
