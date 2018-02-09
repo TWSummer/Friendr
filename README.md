@@ -15,3 +15,14 @@ Friendr is a site for finding and making friends that was inspired by OKCupid. I
 ### Profile Creation
 
 ![Profile Creation](https://i.imgur.com/h3SqU4z.gif)
+
+Profile creation includes several distinct features.
+
+* Setting basic fields (name, birth date, gender)
+* Writing open ended answers (About Me, What I'm Looking For)
+* Setting the user's location
+* Uploading a profile image
+
+### Messaging
+
+![Messaging](https://i.imgur.com/400OXej.gif)
