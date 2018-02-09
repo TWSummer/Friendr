@@ -53,7 +53,7 @@ At the heart of Friendr's compatibility algorithm are the site's questions. Answ
 
 ![Questions](https://i.imgur.com/tjiXXjO.gif)
 
-Storing a question and the corresponding answers requires several tables and relationships in the database. A question can have several options that users can select as answers. Many users will answer each question, so each question will have many `question_answers`. When a user does answer a question, they do not just select an importance and a `question_option` as their answer, but also potentially many `question_friend_answers` (answers they will accept from a friend).
+Storing a question and the corresponding answers requires several tables and relationships in the database. A question can have several options that users can select as answers. Many users will answer each question, so `questions` will have many `question_answers`. When a user does answer a question, they do not just select an importance and an option from  `question_options` as their answer, but also potentially many `question_friend_answers` (answers they will accept from a friend).
 
 These models for these tables possess validations on the presence of one another to prevent question answers from getting into the database without a corresponding question, and to ensure that if a question answer ever needs to be destroyed, the corresponding question friend answers are also destroyed from the database.
 
@@ -82,6 +82,26 @@ class QuestionAnswer < ApplicationRecord
   end
 end
 ```
+
+### Friend Search
+
+The Friendr search feature allows users to find friends limited within an age range they specify, within a certain distance from their location, and who have been active within a certain amount of time. It also allows users to sort their results based upon their compatibility % with other users or based upon the distance between their location and the other user's location. The search parameters for each user are stored on the server, so once a user sets the parameters that they want to search by, the site will continue to use those parameters every time they return to Friendr until they choose to update them.
+
+![Search](https://i.imgur.com/zQEQE2F.gif)
+
+Powering the search feature is complex logic on the backend to produce the search results. The search requires information that is stored on a user's profile (birthdate, latitude, longitude, name), all of the user's `question_answers`, and their corresponding `question_friend_answers` (the answers that they will accept from a friend).
+
+In order to avoid an N+1 query, the search feature utilizes ActiveRecord's `includes` method to grab all of this information in a single database query:
+
+```ruby
+@search_result = @search_result
+                .includes(:profile)
+                .includes(question_answers: :question_friend_answers)
+                .where("users.id != #{current_user.id}")
+                .where("users.demo IS NULL")
+```
+
+
 
 ### Messaging
 
