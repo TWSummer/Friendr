@@ -38,6 +38,7 @@ class AuthForm extends React.Component {
             value={this.state.username}
             className="auth-input"
             placeholder="Username"
+            autoFocus={true}
             onChange={this.update("username").bind(this)}
             />
           <br />

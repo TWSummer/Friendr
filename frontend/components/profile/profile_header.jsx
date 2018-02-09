@@ -106,6 +106,7 @@ class ProfileHeader extends React.Component {
             placeholder="First Name"
             value={this.state.name}
             className="profile-header-input"
+            autoFocus={true}
             onChange={this.update("name").bind(this)}
             />
           <br/>
