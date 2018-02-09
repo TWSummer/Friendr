@@ -12,7 +12,7 @@ class SiteFooter extends React.Component {
         <a href="">About</a>
         <a href="https://github.com/TWSummer">Github</a>
         <a href="https://www.linkedin.com/in/twsummer/">Linked In</a>
-        <a href="">email</a>
+        <a href="mailto:TWSummer@gmail.com">Email</a>
       </footer>
     );
   }

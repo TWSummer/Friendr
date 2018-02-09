@@ -87,16 +87,16 @@ input[type="submit"] {
   background: #ddd;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .page-footer a {
   color: #555;
-  padding: 10px 20px
+  padding: 10px 90px
 }
 
 .page-footer a:first-of-type {
-  padding-left: 50px;
+
 }
 
 .page-footer a:hover {
