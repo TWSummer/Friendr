@@ -47,6 +47,12 @@ A user's location is stored in the database as a pair of latitude and longitude 
 
 Profile images are uploaded directly to Cloudinary, allowing only a url of the image to be stored in the database and transferred whenever a page is loaded. In order to keep Cloudinary's API keys secret, Friendr utilizes the Figaro gem allowing the API keys to be sent to Heroku without being pushed to Github.
 
+### Questions
+
+At the heart of Friendr's compatibility algorithm are the site's questions. Answering questions allows users to tell Friendr what qualities are important to them in a friendship.
+
+![Questions](https://i.imgur.com/tjiXXjO.gif)
+
 ### Messaging
 
 ![Messaging](https://i.imgur.com/400OXej.gif)
