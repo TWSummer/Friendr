@@ -123,6 +123,16 @@ def distance(loc1, loc2)
 end
 ```
 
+Finally, the crux of the searching algorithm is the compatibility calculation. In order to compute the compatibility between the current user and another user, Friendr does several things:
+
+1. Find all of the questions that both the current user and the other user have answered.
+2. Sum the importance that the current user has attached to each of these questions (Importance values, High: 7, Medium: 3, Low: 1, Allow Any Answer: 0)
+3. For the questions where the other user's answer is included in the friend answer options that the current user will accept sum the importance the user has attached to these.
+4. Divide the sum from item #3 by the sum from item #2 to get the compatibility that the current user would rate the other user.
+5. Since friendship is not one-sided, steps 2-4 are repeated swapping the positions of the current user and the other user. The results of both calculations are averaged together.
+6. Since Friendr does not want to give high match percentages based on very few questions, the inverse of the number of mutual questions is subtracted from the average calculated in item #5.
+7. Results are rounded to 3 significant digits, and negative values are rounded up to zero.
+
 ### Messaging
 
 ![Messaging](https://i.imgur.com/400OXej.gif)
