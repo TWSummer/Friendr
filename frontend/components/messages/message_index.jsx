@@ -11,7 +11,6 @@ class MessageIndex extends React.Component {
   }
 
   render() {
-    console.log(this.props.messages);
     return (
       <main className="messages-index">
         <header className="messages-header">
