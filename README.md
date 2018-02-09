@@ -53,6 +53,36 @@ At the heart of Friendr's compatibility algorithm are the site's questions. Answ
 
 ![Questions](https://i.imgur.com/tjiXXjO.gif)
 
+Storing a question and the corresponding answers requires several tables and relationships in the database. A question can have several options that users can select as answers. Many users will answer each question, so each question will have many `question_answers`. When a user does answer a question, they do not just select an importance and a `question_option` as their answer, but also potentially many `question_friend_answers` (answers they will accept from a friend).
+
+These models for these tables possess validations on the presence of one another to prevent question answers from getting into the database without a corresponding question, and to ensure that if a question answer ever needs to be destroyed, the corresponding question friend answers are also destroyed from the database.
+
+```ruby
+class QuestionAnswer < ApplicationRecord
+  validates :importance, :question_option_id, presence: true
+  validate :not_all_options, :appropriate_importance
+
+  belongs_to :question
+  belongs_to :user
+  belongs_to :question_option, optional: true
+  has_many :question_friend_answers, dependent: :destroy
+
+  def not_all_options
+    if question_friend_answers.length == question.question_options.length
+      errors.add(:question_friend_answers, "should be 'Any of the above' if you will accept any answer")
+    end
+  end
+
+  def appropriate_importance
+    if question_friend_answers.first &&
+       question_friend_answers.first.question_option_id != -1 &&
+       importance == 0
+      errors.add(:importance, "must be selected")
+    end
+  end
+end
+```
+
 ### Messaging
 
 ![Messaging](https://i.imgur.com/400OXej.gif)
