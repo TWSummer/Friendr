@@ -59,6 +59,7 @@ class Api::UsersController < ApplicationController
       active_within: 21
     )
     generate_demo_messages
+    answer_demo_questions
     if @user.save
       login(@user)
       render :show
@@ -75,6 +76,11 @@ class Api::UsersController < ApplicationController
 
   def generate_demo_messages
     Message.create(
+      sender: User.find_by(username: "RadicalPotato"),
+      recipient: @user,
+      body: "I'm on team Valor too! What is your level on Pokemon Go? What is your highest CP Pokemon?"
+    )
+    Message.create(
       sender: @user,
       recipient: User.find_by(username: "Theo"),
       body: "Hey Theo,
@@ -90,6 +96,11 @@ class Api::UsersController < ApplicationController
 
       I built it out of PVC parts that I got from Home Depot. There is a base that has a hole with a valve that I took from a bike tire, that you can attach a bike pump to in order to build up the pressure. Then there is a valve that you can turn to release the pressure, and on the other end of the valve is a barrel that you can shove pickles into or whatever other vegetables will fit. My friends and I have had a lot of fun over the years shooting vegetables across the local park in my neighborhood, so in that sense the pickle eating contest became a big success!"
     )
+    Message.create(
+      sender: @user,
+      recipient: User.find_by(username: "Theo"),
+      body: "Lol, that is a great story! Building a pneumatic vegetable launcher would not have been my first thought if I had a surplus of pickles. :-P"
+    )
   end
 
   def generate_new_user_messages
@@ -102,5 +113,153 @@ class Api::UsersController < ApplicationController
 
       If you have any questions about the App, feel free to send me a message!"
     )
+  end
+
+  def answer_demo_questions
+    questions = Question.order(:id).limit(14)
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[0]
+    answer.user = @user
+    answer.question_option = questions[0].question_options[0]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[0].question_options[0]),
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[0].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[1]
+    answer.user = @user
+    answer.question_option = questions[1].question_options[2]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[1].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 1
+    answer.question = questions[2]
+    answer.user = @user
+    answer.question_option = questions[2].question_options[1]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[2].question_options[1])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 1
+    answer.question = questions[3]
+    answer.user = @user
+    answer.question_option = questions[3].question_options[1]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[3].question_options[1]),
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[3].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[4]
+    answer.user = @user
+    answer.question_option = questions[4].question_options[0]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[4].question_options[0])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[5]
+    answer.user = @user
+    answer.question_option = questions[5].question_options[0]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[5].question_options[0])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[6]
+    answer.user = @user
+    answer.question_option = questions[6].question_options[3]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[6].question_options[3]),
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[6].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 1
+    answer.question = questions[7]
+    answer.user = @user
+    answer.question_option = questions[7].question_options[2]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[7].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 7
+    answer.question = questions[8]
+    answer.user = @user
+    answer.question_option = questions[8].question_options[0]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[8].question_options[0]),
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[8].question_options[1]),
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[8].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[9]
+    answer.user = @user
+    answer.question_option = questions[9].question_options[0]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[9].question_options[0])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 1
+    answer.question = questions[10]
+    answer.user = @user
+    answer.question_option = questions[10].question_options[1]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[10].question_options[1])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 3
+    answer.question = questions[11]
+    answer.user = @user
+    answer.question_option = questions[11].question_options[1]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[11].question_options[1])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 7
+    answer.question = questions[12]
+    answer.user = @user
+    answer.question_option = questions[12].question_options[2]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[12].question_options[2])
+    ]
+    answer.save
+
+    answer = QuestionAnswer.new
+    answer.importance = 7
+    answer.question = questions[13]
+    answer.user = @user
+    answer.question_option = questions[13].question_options[0]
+    answer.question_friend_answers = [
+      QuestionFriendAnswer.create(question_answer: answer, question_option: questions[13].question_options[0])
+    ]
+    answer.save
   end
 end
