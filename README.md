@@ -26,3 +26,5 @@ Profile creation includes several distinct features.
 ### Messaging
 
 ![Messaging](https://i.imgur.com/400OXej.gif)
+
+More details
