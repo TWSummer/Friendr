@@ -135,7 +135,11 @@ Finally, the crux of the searching algorithm is the compatibility calculation. I
 
 ### Messaging
 
+When a user views their messages on Friendr they see them separated into conversations with every other user they have interacted with. These conversations are ordered based upon the time that the most recent message in each conversation was sent/received with the conversations that have had the most recent activity appearing at the top.
+
 ![Messaging](https://i.imgur.com/400OXej.gif)
+
+By default a conversation shows a snippet of the first 160 characters of the most recent message that has been sent or received with another user; however, upon clicking on the conversation it is expanded to display a full history of the messages that have been exchanged with another user including the dates when each message was sent.
 
 ## Future Features
 
@@ -146,3 +150,5 @@ Finally, the crux of the searching algorithm is the compatibility calculation. I
 * Adding additional features to search (search by gender, search for keywords on a user's profile)
 
 * Doing the compatibility calculation as part of the friend search SQL query, eliminating the need to create Ruby objects for each of the `question_answers` and `question_friend_answers` thereby improving search efficiency
+
+* Links from messages page to the profiles of the people that a user has been messaging
