@@ -164,17 +164,18 @@ class ProfileHeader extends React.Component {
   }
 
   uploadCallback(errors, successDetails) {
+    console.log(successDetails);
     if (errors === null) {
       this.props.updateProfile({
         id: this.state.id,
         user_id: this.state.user_id,
-        primary_img_url: successDetails[0].url
+        primary_img_url: successDetails[0].secure_url
       })
       .then(
         () => this.setState({
           header: false,
           showErrors: false,
-          primary_img_url: successDetails[0].url
+          primary_img_url: successDetails[0].secure_url
         }),
         () => this.setState({showErrors: true})
       );
