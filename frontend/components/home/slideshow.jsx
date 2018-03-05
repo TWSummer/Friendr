@@ -6,6 +6,16 @@ class Slideshow extends React.Component {
     this.state = {slideIndex: 0, numImages: 3};
     this.plusSlides = this.plusSlides.bind(this);
     this.currentSlide = this.currentSlide.bind(this);
+    this.loopSlides = this.loopSlides.bind(this);
+  }
+
+  componentDidMount() {
+    this.loopSlides();
+  }
+
+  loopSlides() {
+    this.plusSlides(1)();
+    setTimeout(this.loopSlides, 8000);
   }
 
   plusSlides(n) {
@@ -38,7 +48,7 @@ class Slideshow extends React.Component {
       <section>
         <div className="slideshow-container">
           <div className={`mySlides fade ${image1}`}>
-            <img src="https://i.imgur.com/a0m0U5M.png"/>
+            <img src="https://i.imgur.com/qhreoJw.png"/>
             <div className="text">Joey and Mark became best friends after meeting through Friendr</div>
           </div>
 
@@ -55,7 +65,6 @@ class Slideshow extends React.Component {
           <a className="prev" onClick={this.plusSlides(-1)}>&#10094;</a>
           <a className="next" onClick={this.plusSlides(1)}>&#10095;</a>
         </div>
-        <br/>
 
         <div className="slideshow-circle-buttons">
           <span className={`dot ${dot1}`} onClick={this.currentSlide(0)}></span>

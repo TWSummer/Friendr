@@ -51,7 +51,7 @@ class HomePage extends React.Component {
         />;
     }
     return (
-      <div onClick={this.showForm("").bind(this)}>
+      <div className="home-page-body" onClick={this.showForm("").bind(this)}>
         <header className="standard-header">
           <Link className="header-logo" to="/">
             <img src="https://i.imgur.com/bQgZtp4.png" alt="logo"/>
