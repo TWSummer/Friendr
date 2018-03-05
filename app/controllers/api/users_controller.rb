@@ -11,8 +11,8 @@ class Api::UsersController < ApplicationController
         max_age: 99,
         active_within: 21
       )
-    generate_new_user_messages
     if @user.save
+      generate_new_user_messages
       login(@user)
       render :show
     else
