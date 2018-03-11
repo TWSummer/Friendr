@@ -7,6 +7,7 @@ class ProfileHeader extends React.Component {
     this.state = this.props.profile;
     this.showUploadForm = this.showUploadForm.bind(this);
     this.uploadCallback = this.uploadCallback.bind(this);
+    this.closeEditForm = this.closeEditForm.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -58,6 +59,17 @@ class ProfileHeader extends React.Component {
     this.setState({header: true});
   }
 
+  closeEditForm(e) {
+    this.setState({
+      name: this.props.profile.name,
+      birthdate: this.props.profile.birthdate,
+      latitude: this.props.profile.latitude,
+      longitude: this.props.profile.longitude,
+      showErrors: false, 
+      header: false
+    });
+  }
+
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value});
@@ -97,7 +109,11 @@ class ProfileHeader extends React.Component {
       <div
         className="profile-header-fields expanded-header-color">
         {errorsField}
-        <i className="fas fa-times" id="close-header-edit"></i>
+        <i
+          className="fas fa-times"
+          id="close-header-edit"
+          onClick={this.closeEditForm}
+          ></i>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label htmlFor="name">First Name</label>
           <br/>
