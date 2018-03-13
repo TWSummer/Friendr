@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MessageIndexItem extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class MessageIndexItem extends React.Component {
 
   cancelMessage(e) {
     e.preventDefault();
-    this.setState({show: false, messageBody: "", showErrors: false})
+    this.setState({show: false, messageBody: "", showErrors: false});
   }
 
   sendMessage(e) {
@@ -145,7 +146,10 @@ class MessageIndexItem extends React.Component {
           className="conversation-item"
           onClick={this.showConversation}
           >
-          <img src={this.props.conversation[0].other_user.primary_img_url}/>
+          <Link to={`/profile/${this.props.conversation[0].other_user.username}`} className="message-profile-link">
+            <img src={this.props.conversation[0].other_user.primary_img_url}/>
+            <div className="message-profile-image-overlay"></div>
+          </Link>
           <div>
             <h2>{this.props.conversation[0].other_user.name}</h2>
             <p>{this.getPreview()}</p>
@@ -157,6 +161,7 @@ class MessageIndexItem extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       this.conversationItemContents()
     );
