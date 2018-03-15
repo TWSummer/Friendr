@@ -65,7 +65,7 @@ class ProfileHeader extends React.Component {
       birthdate: this.props.profile.birthdate,
       latitude: this.props.profile.latitude,
       longitude: this.props.profile.longitude,
-      showErrors: false, 
+      showErrors: false,
       header: false
     });
   }
@@ -181,7 +181,6 @@ class ProfileHeader extends React.Component {
   }
 
   uploadCallback(errors, successDetails) {
-    console.log(successDetails);
     if (errors === null) {
       this.props.updateProfile({
         id: this.state.id,
