@@ -16,4 +16,6 @@ RSpec.describe User, type: :model do
     expect(invalid_user).not_to be_valid
     expect(valid_user).to be_valid
   end
+
+  it { should have_one(:profile)}
 end
