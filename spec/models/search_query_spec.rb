@@ -14,5 +14,14 @@ RSpec.describe SearchQuery, type: :model do
       query.min_age = 18
       expect(query).to be_valid
     end
+
+    it "validates that max age is greater than min age" do
+      query = SearchQuery.new(min_age: 50, max_age: 45)
+      query.user = User.new
+      expect(query).not_to be_valid
+
+      query.max_age = 52
+      expect(query).to be_valid
+    end
   end
 end
