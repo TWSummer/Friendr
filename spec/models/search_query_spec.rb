@@ -23,5 +23,15 @@ RSpec.describe SearchQuery, type: :model do
       query.max_age = 52
       expect(query).to be_valid
     end
+
+    it "validates that max distance is greater than zero" do
+      query = SearchQuery.new(max_distance: -1)
+      query.user = User.new
+      expect(query).not_to be_valid
+      query.max_distance = 0
+      expect(query).not_to be_valid
+      query.max_distance = 1
+      expect(query).to be_valid
+    end
   end
 end
