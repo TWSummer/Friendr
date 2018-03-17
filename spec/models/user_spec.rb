@@ -22,5 +22,7 @@ RSpec.describe User, type: :model do
     it { should have_one(:profile) }
     it { should have_many(:sent_messages) }
     it { should have_many(:received_messages) }
+    it { should have_many(:question_answers) }
+    it { should have_many(:question_friend_answers) }
   end
 end
