@@ -5,4 +5,8 @@ RSpec.describe Message, type: :model do
     it { should belong_to(:sender) }
     it { should belong_to(:recipient) }
   end
+
+  describe("Validations") do
+    it { should validate_presence_of(:body) }
+  end
 end
