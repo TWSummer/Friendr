@@ -17,5 +17,10 @@ RSpec.describe User, type: :model do
     expect(valid_user).to be_valid
   end
 
-  it { should have_one(:profile)}
+  describe("Associations") do
+
+    it { should have_one(:profile) }
+    it { should have_many(:sent_messages) }
+    it { should have_many(:received_messages) }
+  end
 end
