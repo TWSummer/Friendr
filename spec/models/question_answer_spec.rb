@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe QuestionAnswer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Associations" do
+    it { should have_many(:question_friend_answers) }
+    it { should belong_to(:question) }
+    it { should belong_to(:user) }
+    it { should belong_to(:question_option) }
+  end
 end
