@@ -7,4 +7,8 @@ RSpec.describe QuestionAnswer, type: :model do
     it { should belong_to(:user) }
     it { should belong_to(:question_option) }
   end
+
+  describe("Validations") do
+    
+  end
 end
