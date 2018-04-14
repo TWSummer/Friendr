@@ -9,7 +9,7 @@ class SiteFooter extends React.Component {
   render() {
     return (
       <footer className="page-footer">
-        <a href="">About</a>
+        <a href="http://www.theodoresummer.com/">Portfolio</a>
         <a href="https://github.com/TWSummer">Github</a>
         <a href="https://www.linkedin.com/in/twsummer/">Linked In</a>
         <a href="mailto:TWSummer@gmail.com">Email</a>
